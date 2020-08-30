@@ -1,0 +1,221 @@
+.controls {
+  display: flex;
+  &__bookmark {
+    background-color: red;
+    flex-grow: 1;
+    height: 0;
+    padding-bottom: 25%;
+
+    &__add {
+      display: inline-block;
+      background-color: red;
+      width: 50%;
+      height: 0;
+      padding-bottom: 50%;
+    }
+    &__remove {
+      display: inline-block;
+
+      background-color: purple;
+      width: 50%;
+      height: 0;
+      padding-bottom: 50%;
+    }
+    &__offset {
+      background-color: yellow;
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+    }
+  }
+
+  &__source {
+    background-color: green;
+    flex-grow: 1;
+    height: 0;
+    padding-bottom: 25%;
+  }
+  &__record {
+    background-color: blue;
+    flex-grow: 1;
+    height: 0;
+    padding-bottom: 25%;
+  }
+  &__rewind {
+    background-color: orange;
+    flex-grow: 1;
+    height: 0;
+    padding-bottom: 25%;
+  }
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.controls2 {
+  display: flex;
+  //   flex-wrap: wrap;
+  justify-content: center;
+//   width: 90%;
+  margin: auto;
+  border-style: solid;
+  border-color: red;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 0;
+  margin-bottom: 3rem;
+  &__box {
+    height: 5rem;
+    width: 5rem;
+    border-right: 1px solid red;
+    // font-size: 5em;
+  }
+  &__spacer {
+    height: 5rem;
+    flex-grow: 2;
+    // background-color: gray;
+    min-width: 5rem;
+    border-right: 1px solid red;
+  }
+
+  &__bookmark {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__add {
+      // display: inline-flex;
+      width: 50%;
+      height: 50%;
+      //   background-color: red;
+      border-style: solid;
+      border-color: red;
+      border-top-width: 0;
+      border-bottom-width: 1px;
+      border-left-width: 0;
+      border-right-width: 1px;
+    }
+    &__remove {
+      // display: inline-flex;
+      width: 50%;
+      height: 50%;
+      //   background-color: purple;
+      border-style: solid;
+      border-color: red;
+      border-top-width: 0;
+      border-bottom-width: 1px;
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+    &__offset {
+      width: 100%;
+      height: 50%;
+      background-color: yellow;
+    }
+    // &__label {
+    //   width: 100%;
+    // }
+  }
+
+  &__source {
+    // background-color: green;
+  }
+  &__record {
+    // background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    &__mic {
+      flex-grow: 1;
+      border-right: 1px solid red;
+      height: 100%;
+    }
+    &__play {
+      flex-grow: 1;
+      height: 100%;
+
+    }
+  }
+  &__rewind {
+    // background-color: orange;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__backward {
+      // display: inline-flex;
+      width: 50%;
+      height: 50%;
+      //   background-color: red;
+      border-style: solid;
+      border-color: red;
+      border-top-width: 0;
+      border-bottom-width: 1px;
+      border-left-width: 0;
+      border-right-width: 1px;
+    }
+    &__forward {
+      // display: inline-flex;
+      width: 50%;
+      height: 50%;
+      //   background-color: purple;
+      border-style: solid;
+      border-color: red;
+      border-top-width: 0;
+      border-bottom-width: 1px;
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+    &__offset {
+      width: 100%;
+      height: 50%;
+      background-color: yellow;
+    }
+  }
+
+  &__utils{
+
+    &__resize{
+        width: 100%;
+        height: 100%;
+    }
+  }
+}
+
+.controls-button {
+  display: flex;
+  justify-content: center;
+    align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+  &:hover {
+    background-color: gray;
+  }
+}
+
+.controls-input {
+  display: flex;
+  font-size: 1.5rem;
+
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  // font-size: 50%
+  text-align: center;
+}
+
+.controls-label {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+
+  text-align: center;
+}
