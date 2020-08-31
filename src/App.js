@@ -2,8 +2,8 @@ import React from "react";
 import logo from "./logo.svg";
 import { useMediaQuery } from "beautiful-react-hooks";
 import "./App.scss";
-import Controls from "./Controls";
-import BookmarkHistory from "./BookmarkHistory";
+import Controls from "./components/Controls";
+import BookmarkHistory from "./components/BookmarkHistory";
 
 const bookmarks = [
   { id: 1, time: 305 },
