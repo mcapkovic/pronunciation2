@@ -78,7 +78,7 @@
     height: 5rem;
     flex-grow: 2;
     // background-color: gray;
-    min-width: 5rem;
+    min-width: 0.4rem;
     border-right: 1px solid red;
   }
 
@@ -175,10 +175,23 @@
   }
 
   &__utils{
-
+    display: none;
     &__resize{
+        display: none;
         width: 100%;
         height: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 450px) {
+    &__utils{
+        display: block;
+    }
+  }
+
+  @media only screen and (min-width: 751px) {
+    &__utils__resize{
+        display: block;
     }
   }
 }

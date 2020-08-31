@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
+import { useMediaQuery } from "beautiful-react-hooks";
 import "./App.scss";
 import Controls from "./Controls";
 import BookmarkHistory from "./BookmarkHistory";
@@ -39,7 +40,9 @@ const bookmarks = [
   { id: 32, time: 603 },
 ];
 function MainSection() {
-  const [layout, setLayout] = React.useState("row");
+  const [layoutButton, setLayoutButton] = React.useState("row");
+  const forceColumn = useMediaQuery("(max-width: 750px)");
+  const layout = forceColumn ? "column" : layoutButton;
 
   return (
     <div className={`practice practice--${layout}`}>
@@ -47,7 +50,7 @@ function MainSection() {
         <div
           className={`practice__video__source practice__video__source--${layout}`}
         ></div>
-        <Controls layout={layout} setLayout={setLayout}/>
+        <Controls layout={layout} setLayout={setLayoutButton} />
       </div>
       <BookmarkHistory
         history={bookmarks}
