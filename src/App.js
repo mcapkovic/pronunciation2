@@ -39,24 +39,53 @@ const bookmarks = [
   { id: 31, time: 603 },
   { id: 32, time: 603 },
 ];
+
+function ControlledPlayer(props) {
+  const { layout, setLayoutButton, className } = props;
+  return (
+    <div className={`controlled-player ${className}`}>
+      <div className={`controlled-player__source`}></div>
+      <Controls layout={layout} setLayout={setLayoutButton} />
+    </div>
+  );
+}
+
+function InfoPanel(props) {
+  const { className } = props;
+  return <div className={`${className}`}>{props.children}</div>;
+}
 function MainSection() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
 
   return (
-    <div className={`practice practice--${layout}`}>
-      <div className="practice__video">
-        <div
-          className={`practice__video__source practice__video__source--${layout}`}
-        ></div>
-        <Controls layout={layout} setLayout={setLayoutButton} />
+    <div className={`page page--${layout}`}>
+      <div className={`page__video-row`}>
+        <ControlledPlayer
+          className={`page__video-row__video`}
+          layout={layout}
+          setLayoutButton={setLayoutButton}
+        />
+        {layout === "row" && (
+          <BookmarkHistory
+            history={bookmarks}
+            current={1}
+            className={`page__video-row__history`}
+          />
+        )}
       </div>
-      <BookmarkHistory
-        history={bookmarks}
-        current={1}
-        className={`practice__history practice__history--${layout}`}
-      />
+
+      <div className="page__details-row">
+        {layout !== "row" && (
+          <BookmarkHistory
+            history={bookmarks}
+            current={1}
+            className={`page__details-row__history`}
+          />
+        )}
+        <InfoPanel className="page__details-row__info">ssss</InfoPanel>
+      </div>
     </div>
   );
 }
