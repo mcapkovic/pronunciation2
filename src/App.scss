@@ -1,98 +1,4 @@
-/* .App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-// .app--video{
-//   background-color: red;
-//   height: 5em;
-//   // width: 90vw;
-//   height: 80vh;
-
-//   max-width: 90vw;
-//   max-height: 50vw;
-
-//   // margin: auto;
-// }
-
-.practice {
-  display: flex;
-  width: 90%;
-  margin: auto;
-  &__video {
-    flex-grow: 1;
-  }
-
-  .controlled-player__source {
-    background-color: red;
-    height: 5em;
-    // width: 90vw;
-    height: 80vh;
-
-    max-width: 90vw;
-    max-height: 40vw;
-  }
-
-  &--column {
-    flex-direction: column;
-    width: 100%;
-
-    .controlled-player__source {
-      max-height: 60vw;
-      max-width: 100vw;
-    }
-  }
-
-  &__history {
-    margin: 0 0 0 0.5rem;
-    // width: 100%;
-    width: 10rem;
-    min-width: 5rem;
-
-    height: auto;
-    max-height: calc(40vw + 5rem);
-
-    overflow: hidden;
-    &--column {
-      margin: auto;
-      width: 20rem;
-    }
-  }
-}
 
 .page {
   &__video-row {
@@ -143,7 +49,7 @@
     }
     &__info {
       margin: 1rem 0 0 0;
-      background-color: red;
+      // background-color: red;
       flex-grow: 1;
     }
   }
@@ -153,7 +59,7 @@
       flex-direction: row;
       max-height: 15rem;
       &__info {
-        margin: 0 0 0 0.5rem;
+        margin: 0 0 0 1rem;
       }
     }
   }

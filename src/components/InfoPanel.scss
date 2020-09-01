@@ -1,0 +1,28 @@
+.video-source{
+    // display: flex;
+    // margin: 0.3rem 0 0 0;
+    position: relative;
+    &__input{
+        flex-grow: 1;
+        border-radius: 0;
+        border: 1px solid red;
+        width: 100%;
+    }
+    &__button{
+        position: absolute;
+        right: 0;
+        background-color: transparent;
+        border: none;
+        top: 55%;
+        transform: translateY(-50%);
+    }
+}
+
+.info-title {
+    padding: 0.2rem 0;
+    border-bottom: 1px solid gray;
+
+    &--source{
+        border: none;
+    }
+  }

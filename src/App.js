@@ -4,6 +4,8 @@ import { useMediaQuery } from "beautiful-react-hooks";
 import "./App.scss";
 import Controls from "./components/Controls";
 import BookmarkHistory from "./components/BookmarkHistory";
+import InfoPanel from "./components/InfoPanel";
+import SearchLayout from './pages/SearchLayout';
 
 const bookmarks = [
   { id: 1, time: 305 },
@@ -50,11 +52,7 @@ function ControlledPlayer(props) {
   );
 }
 
-function InfoPanel(props) {
-  const { className } = props;
-  return <div className={`${className}`}>{props.children}</div>;
-}
-function MainSection() {
+function MainLayout() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
@@ -91,11 +89,15 @@ function MainSection() {
 }
 
 function App() {
-  return (
-    <div>
-      <MainSection />
-    </div>
+  const urlParameters = React.useMemo(
+    () => new URL(document.location.href).searchParams,
+    []
   );
+  const videoUrl = React.useMemo(() => urlParameters.get("url"), [
+    urlParameters,
+  ]);
+
+  return <div>{videoUrl ? <MainLayout /> : <SearchLayout />}</div>;
 }
 
 export default App;

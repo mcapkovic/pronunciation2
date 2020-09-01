@@ -1,0 +1,32 @@
+.search-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+
+  &__search {
+    position: relative;
+    max-width: 600px;
+    width: 80vw;
+    &__input {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px 40px 10px 15px;
+      outline: none;
+      border: 1px solid #cccccc;
+      &:focus {
+        box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+        border-color: transparent;
+      }
+    }
+    &__button {
+      position: absolute;
+      right: 9px;
+      background-color: transparent;
+      border: none;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
