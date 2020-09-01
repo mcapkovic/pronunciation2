@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function useGetKey() {
-  const [lastPressedKey, setLastPressedKey] = useState(null);
+  const [lastPressedKey, setLastPressedKey] = useState('');
 
   function downHandler({ key }) {
     setLastPressedKey(key);

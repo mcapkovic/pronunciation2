@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import {useGetKey} from '../hooks/useGetKey';
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
@@ -31,9 +32,15 @@ function Input(props) {
 function Label(props) {
   return <div className="controls-label">{props.children}</div>;
 }
-function Controls(props) {
 
-    const {layout, setLayout} = props;
+function LastPressedKey(props){
+  const lastPressedKey = useGetKey();
+  const {maxLength} = props;
+  return(<span>{lastPressedKey.slice(0, maxLength)}</span>)
+}
+
+function Controls(props) {
+  const { layout, setLayout } = props;
   return (
     <div>
       <div className="controls2">
@@ -80,11 +87,14 @@ function Controls(props) {
 
         <div className="controls2__utils controls2__box">
           <div className="controls2__utils__resize">
-            <Button icon={ layout === "row" ? faExpandAlt : faCompressAlt} onClick={() => setLayout(layout === "row" ? "column" : "row")}/>
+            <Button
+              icon={layout === "row" ? faExpandAlt : faCompressAlt}
+              onClick={() => setLayout(layout === "row" ? "column" : "row")}
+            />
           </div>
-          {/* <div className="controls2__utils __forward">
-            <Button icon={faForward} />
-          </div> */}
+          <div className="controls2__utils__key">
+            <LastPressedKey maxLength={5} />
+          </div>
           {/* <div className="controls2__utils __offset">
             <Input />
           </div> */}

@@ -1,3 +1,5 @@
+$border: 1px solid red;
+
 .controls {
   display: flex;
   &__bookmark {
@@ -59,19 +61,15 @@
   display: flex;
   //   flex-wrap: wrap;
   justify-content: center;
-//   width: 90%;
+  //   width: 90%;
   margin: auto;
-  border-style: solid;
-  border-color: red;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-left-width: 1px;
+  border: $border;
   border-right-width: 0;
   margin-bottom: 3rem;
   &__box {
     height: 5rem;
     width: 5rem;
-    border-right: 1px solid red;
+    border-right: $border;
     // font-size: 5em;
   }
   &__spacer {
@@ -79,7 +77,7 @@
     flex-grow: 2;
     // background-color: gray;
     min-width: 0.4rem;
-    border-right: 1px solid red;
+    border-right: $border;
   }
 
   &__bookmark {
@@ -91,22 +89,17 @@
       width: 50%;
       height: 50%;
       //   background-color: red;
-      border-style: solid;
-      border-color: red;
+      border: $border;
       border-top-width: 0;
-      border-bottom-width: 1px;
       border-left-width: 0;
-      border-right-width: 1px;
     }
     &__remove {
       // display: inline-flex;
       width: 50%;
       height: 50%;
       //   background-color: purple;
-      border-style: solid;
-      border-color: red;
+      border: $border;
       border-top-width: 0;
-      border-bottom-width: 1px;
       border-left-width: 0;
       border-right-width: 0;
     }
@@ -129,13 +122,12 @@
     flex-wrap: wrap;
     &__mic {
       flex-grow: 1;
-      border-right: 1px solid red;
+      border-right: $border;
       height: 100%;
     }
     &__play {
       flex-grow: 1;
       height: 100%;
-
     }
   }
   &__rewind {
@@ -148,22 +140,17 @@
       width: 50%;
       height: 50%;
       //   background-color: red;
-      border-style: solid;
-      border-color: red;
+      border: $border;
       border-top-width: 0;
-      border-bottom-width: 1px;
       border-left-width: 0;
-      border-right-width: 1px;
     }
     &__forward {
       // display: inline-flex;
       width: 50%;
       height: 50%;
       //   background-color: purple;
-      border-style: solid;
-      border-color: red;
+      border: $border;
       border-top-width: 0;
-      border-bottom-width: 1px;
       border-left-width: 0;
       border-right-width: 0;
     }
@@ -174,32 +161,51 @@
     }
   }
 
-  &__utils{
+  &__utils {
     display: none;
-    &__resize{
-        display: none;
-        width: 100%;
-        height: 100%;
+    &__resize {
+      display: none;
+      width: 100%;
+      height: 0%;
+      border: $border;
+      border-top-width: 0;
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+    &__key {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
     }
   }
 
   @media only screen and (min-width: 450px) {
-    &__utils{
-        display: block;
+    &__utils {
+      display: block;
     }
   }
 
   @media only screen and (min-width: 751px) {
-    &__utils__resize{
-        display: block;
+    &__utils{
+      &__resize {
+      display: block;
+      height: 50%;
     }
+    &__key{
+      height: 50%;
+    }
+    }
+
   }
 }
 
 .controls-button {
   display: flex;
   justify-content: center;
-    align-items: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   padding: 0;
