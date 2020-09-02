@@ -98,7 +98,7 @@ function App() {
     urlParameters,
   ]);
 
-  return <div>{videoUrl ? <MainLayout /> : <SearchLayout />}</div>;
+  return <div className='page-wrapper'>{videoUrl ? <MainLayout /> : <SearchLayout />}</div>;
 }
 
 export default App;

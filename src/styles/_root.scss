@@ -1,7 +1,7 @@
 :root{
-    --main-bg-color: brown;
-    --main-gray: gray;
-    --black:  #000000;
+    --main-gray: #808080;
+    --black:  rgb(0, 0, 0);
+    --main-bg-color:  rgb(255, 255, 255);
     --black-alpha-05:  rgba(0, 0, 0, 0.05);
     --black-alpha-10:  rgba(0, 0, 0, 0.1);
     --black-alpha-15:  rgba(0, 0, 0, 0.15);
@@ -11,4 +11,10 @@
     --black-alpha-50:  rgba(0, 0, 0, 0.5);
     --black-alpha-60:  rgba(0, 0, 0, 0.6);
     --black-alpha-80:  rgba(0, 0, 0, 0.8);
+    --primary-text: rgb(12, 12, 12);
+    // --secondary-text: 
+    --main-icon: #505050;
+
+
+    color: var(--primary-text);
 }

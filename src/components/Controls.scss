@@ -216,6 +216,11 @@ $border: 1px solid var(--main-gray);
   &:hover {
     background-color: var(--black-alpha-10);
   }
+
+  svg{
+    color: var(--main-icon);
+  }
+
 }
 
 .controls-input {
@@ -227,7 +232,7 @@ $border: 1px solid var(--main-gray);
   padding: 0;
   margin: 0;
   border: none;
-  // font-size: 50%
+  color: var(--primary-text);
   text-align: center;
 }
 
