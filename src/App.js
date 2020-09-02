@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import { useMediaQuery } from "beautiful-react-hooks";
 import "./App.scss";
+import './styles/all.scss'
 import Controls from "./components/Controls";
 import BookmarkHistory from "./components/BookmarkHistory";
 import InfoPanel from "./components/InfoPanel";

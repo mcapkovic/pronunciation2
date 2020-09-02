@@ -1,4 +1,4 @@
-$border: 1px solid red;
+$border: 1px solid var(--main-gray);
 
 .controls {
   display: flex;
@@ -214,7 +214,7 @@ $border: 1px solid red;
   font-size: 1.5rem;
   background-color: transparent;
   &:hover {
-    background-color: gray;
+    background-color: var(--black-alpha-10);
   }
 }
 
