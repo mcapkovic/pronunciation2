@@ -1,0 +1,21 @@
+.day-night-switch{
+    display: flex;
+
+    &__range{
+        flex-grow: 1;
+    }
+    button{
+        padding: 0;
+        margin: 0;
+        border: none;
+        font-size: 1.5rem;
+        background-color: transparent;
+        &:hover {
+          background-color: var(--black-alpha-10);
+        }
+
+        svg{
+          color: var(--main-icon);
+        }
+    }
+}

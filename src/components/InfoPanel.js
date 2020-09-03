@@ -2,6 +2,7 @@ import React from "react";
 import "./InfoPanel.scss";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DayNightSwitch from "./DayNightSwitch";
 
 function Title(props) {
   const { modifier } = props;
@@ -12,9 +13,9 @@ function Title(props) {
   );
 }
 
-function getVideoSource(){
-    const urlParameters = new URL(document.location.href).searchParams
-    return urlParameters.get("url")
+function getVideoSource() {
+  const urlParameters = new URL(document.location.href).searchParams;
+  return urlParameters.get("url");
 }
 
 function VideoSource(props) {
@@ -47,6 +48,7 @@ function VideoSource(props) {
   );
 }
 
+
 function InfoPanel(props) {
   const { className } = props;
   return (
@@ -61,6 +63,9 @@ function InfoPanel(props) {
         <li>s - something</li>
         <li>d - something</li>
       </ul>
+      <br />
+      <Title>Day Night Switch</Title>
+      <DayNightSwitch />
     </div>
   );
 }

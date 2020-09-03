@@ -83,7 +83,7 @@ function MainLayout() {
             className={`page__details-row__history`}
           />
         )}
-        <InfoPanel className="page__details-row__info">ssss</InfoPanel>
+        <InfoPanel className="page__details-row__info"/>
       </div>
     </div>
   );
