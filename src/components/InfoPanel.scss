@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 .video-source{
     // display: flex;
     // margin: 0.3rem 0 0 0;
@@ -5,10 +7,11 @@
     &__input{
         flex-grow: 1;
         border-radius: 0;
-        border: 1px solid red;
+        border: 1px solid var(--primary-text);
         width: 100%;
         color: var(--primary-text);
-
+        background-color: var(--main-bg-color);
+        transition: $backgroundTransition;
     }
     &__button{
         position: absolute;
@@ -17,6 +20,9 @@
         border: none;
         top: 55%;
         transform: translateY(-50%);
+        svg{
+            color: var(--main-icon);
+        }
     }
 }
 

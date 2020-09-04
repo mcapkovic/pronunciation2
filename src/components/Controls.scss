@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 $border: 1px solid var(--main-gray);
 
 .controls {
@@ -234,6 +236,8 @@ $border: 1px solid var(--main-gray);
   border: none;
   color: var(--primary-text);
   text-align: center;
+  background-color: var(--main-bg-color);
+  transition: $backgroundTransition;
 }
 
 .controls-label {

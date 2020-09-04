@@ -1,7 +1,9 @@
+@import './styles/variables';
+
 .page-wrapper{
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--main-bg-color);
-  transition: background-color 500ms;
+  transition: $backgroundTransition;
 }
 
 .page {
@@ -61,7 +63,7 @@
   @media only screen and (min-width: 600px) {
     &__details-row {
       flex-direction: row;
-      max-height: 15rem;
+      // max-height: 15rem;
       &__info {
         margin: 0 0 0 1rem;
       }

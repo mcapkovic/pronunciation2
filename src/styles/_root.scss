@@ -1,32 +1,35 @@
-:root{
-    --main-gray: #808080;
-    --black:  rgb(0, 0, 0);
-    --main-bg-color-lum: 100%;
-    // --main-bg-color:  hsl(0, 0%, var(--main-bg-color-lum));
-    --main-bg-color: hsl(210deg 4% var(--main-bg-color-lum));
-    --black-alpha-05:  rgba(0, 0, 0, 0.05);
-    --black-alpha-10:  rgba(0, 0, 0, 0.1);
-    --black-alpha-15:  rgba(0, 0, 0, 0.15);
-    --black-alpha-20:  rgba(0, 0, 0, 0.2);
-    --black-alpha-30:  rgba(0, 0, 0, 0.3);
-    --black-alpha-40:  rgba(0, 0, 0, 0.4);
-    --black-alpha-50:  rgba(0, 0, 0, 0.5);
-    --black-alpha-60:  rgba(0, 0, 0, 0.6);
-    --black-alpha-80:  rgba(0, 0, 0, 0.8);
-    // --primary-text: rgb(12, 12, 12);
-    // --secondary-text: 
-    --main-icon-lum: 31%;
-    --main-icon: hsl(0, 0%, var(--main-icon-lum));
-    --primary-text-lum: 10%;
-    --primary-text: hsl(0, 0%, var(--primary-text-lum));
+:root {
+  --main-gray: #808080;
+  --black: rgb(0, 0, 0);
+  --main-bg-color-lum: 100%;
+  // --main-bg-color:  hsl(0, 0%, var(--main-bg-color-lum));
+  --main-bg-color: hsl(210deg 4% var(--main-bg-color-lum));
+  --black-alpha-05: rgba(0, 0, 0, 0.05);
+  --black-alpha-10: rgba(0, 0, 0, 0.1);
+  --black-alpha-15: rgba(0, 0, 0, 0.15);
+  --black-alpha-20: rgba(0, 0, 0, 0.2);
+  --black-alpha-30: rgba(0, 0, 0, 0.3);
+  --black-alpha-40: rgba(0, 0, 0, 0.4);
+  --black-alpha-50: rgba(0, 0, 0, 0.5);
+  --black-alpha-60: rgba(0, 0, 0, 0.6);
+  --black-alpha-80: rgba(0, 0, 0, 0.8);
+  // --primary-text: rgb(12, 12, 12);
+  // --secondary-text:
+  --main-icon-lum: 31%;
+  --main-icon: hsl(0, 0%, var(--main-icon-lum));
+  --primary-text-lum: 10%;
+  --primary-text: hsl(0, 0%, var(--primary-text-lum));
 
+  --speed-slow: 400ms;
+  --speed-medium: 200ms;
+  --speed-fast: 100ms;
 
-
-    color: var(--primary-text);
-    html, body {
-        // min-height: 100%;
-        // min-height: 100vh;
-        width:100%;
-	height:100%;
-      }
+  color: var(--primary-text);
+  html,
+  body {
+    // min-height: 100%;
+    // min-height: 100vh;
+    width: 100%;
+    height: 100%;
+  }
 }
