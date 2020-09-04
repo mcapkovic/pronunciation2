@@ -60,6 +60,10 @@
     }
   }
 
+  &__bottom-spacer{
+    height: 5rem;
+  }
+
   @media only screen and (min-width: 600px) {
     &__details-row {
       flex-direction: row;

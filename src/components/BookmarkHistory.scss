@@ -23,16 +23,7 @@
 .history-button-group {
   position: relative;
   width: 100%;
-  &--selected {
-    background-color: red;
-  }
-  &___value {
-    width: 100%;
-  }
-  &___clear {
-    position: absolute;
-    right: 0;
-  }
+
   button {
     border: none;
     background-color: transparent;
@@ -45,9 +36,26 @@
       background-color: gray;
     }
   }
+
+  &--selected {
+    background-color: #ffad2a;
+    color: #1a1a1a;
+    button{
+      color: #1a1a1a;
+    }
+  }
+  &___value {
+    width: 100%;
+  }
+  &___clear {
+    position: absolute;
+    right: 0;
+  }
+
 }
 
 .history-title {
+  font-weight: 700;
   padding: 0.2rem 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--title-border-color);
 }

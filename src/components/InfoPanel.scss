@@ -1,36 +1,37 @@
-@import '../styles/variables';
+@import "../styles/variables";
 
-.video-source{
-    // display: flex;
-    // margin: 0.3rem 0 0 0;
-    position: relative;
-    &__input{
-        flex-grow: 1;
-        border-radius: 0;
-        border: 1px solid var(--primary-text);
-        width: 100%;
-        color: var(--primary-text);
-        background-color: var(--main-bg-color);
-        transition: $backgroundTransition;
+.video-source {
+  // display: flex;
+  // margin: 0.3rem 0 0 0;
+  position: relative;
+  margin-top: -1px;
+  &__input {
+    flex-grow: 1;
+    border-radius: 0;
+    border: 1px solid var(--title-border-color);
+    width: 100%;
+    color: var(--primary-text);
+    background-color: var(--main-bg-color);
+    transition: $backgroundTransition;
+  }
+  &__button {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    top: 55%;
+    transform: translateY(-50%);
+    svg {
+      color: var(--main-icon);
     }
-    &__button{
-        position: absolute;
-        right: 0;
-        background-color: transparent;
-        border: none;
-        top: 55%;
-        transform: translateY(-50%);
-        svg{
-            color: var(--main-icon);
-        }
-    }
+  }
 }
 
 .info-title {
-    padding: 0.2rem 0;
-    border-bottom: 1px solid gray;
-
-    &--source{
-        border: none;
-    }
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--title-border-color);
+  font-weight: 700;
+  &--source {
+    border: none;
   }
+}

@@ -20,11 +20,16 @@ const colorVariables = [
     min: 100,
     max: 20,
   },
-    {
-      name: "--main-icon-lum",
-      min: 31,
-      max: 100,
-    },
+  {
+    name: "--main-icon-lum",
+    min: 31,
+    max: 100,
+  },
+  {
+    name: "--title-border-color-lum",
+    min: 10,
+    max: 100,
+  },
 ];
 
 function DayNightSwitch() {

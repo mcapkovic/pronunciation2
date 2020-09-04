@@ -2,11 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import { useMediaQuery } from "beautiful-react-hooks";
 import "./App.scss";
-import './styles/all.scss'
+import "./styles/all.scss";
 import Controls from "./components/Controls";
 import BookmarkHistory from "./components/BookmarkHistory";
 import InfoPanel from "./components/InfoPanel";
-import SearchLayout from './pages/SearchLayout';
+import SearchLayout from "./pages/SearchLayout";
 
 const bookmarks = [
   { id: 1, time: 305 },
@@ -83,8 +83,9 @@ function MainLayout() {
             className={`page__details-row__history`}
           />
         )}
-        <InfoPanel className="page__details-row__info"/>
+        <InfoPanel className="page__details-row__info" />
       </div>
+      <div className="page__bottom-spacer" />
     </div>
   );
 }
@@ -98,7 +99,11 @@ function App() {
     urlParameters,
   ]);
 
-  return <div className='page-wrapper'>{videoUrl ? <MainLayout /> : <SearchLayout />}</div>;
+  return (
+    <div className="page-wrapper">
+      {videoUrl ? <MainLayout /> : <SearchLayout />}
+    </div>
+  );
 }
 
 export default App;

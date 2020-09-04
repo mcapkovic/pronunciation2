@@ -24,6 +24,9 @@
   --speed-medium: 200ms;
   --speed-fast: 100ms;
 
+  --title-border-color-lum: 10%;
+  --title-border-color: hsl(0deg 0% var(--title-border-color-lum) / 41%);
+
   color: var(--primary-text);
   html,
   body {
