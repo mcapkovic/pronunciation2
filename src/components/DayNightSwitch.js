@@ -80,12 +80,12 @@ function DayNightSwitch() {
 
   const onChange = (e) => {
     localStorage.setItem("theme-range", e.target.value);
+    const value = bezier(e.target.value / 100, p0, p1, p2, p3).y;
 
-    const test = bezier(e.target.value / 100, p0, p1, p2, p3);
     colorVariables.forEach((variable) => {
       document.documentElement.style.setProperty(
         variable.name,
-        convertRangeValue(test.y, variable.min, variable.max) + "%"
+        convertRangeValue(value, variable.min, variable.max) + "%"
         // convertRangeValue(e.target.value, variable.min, variable.max) + "%"
       );
     });
