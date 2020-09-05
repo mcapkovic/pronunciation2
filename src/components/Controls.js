@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
-import {useGetKey} from '../hooks/useGetKey';
+import { useGetKey } from "../hooks/useGetKey";
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
@@ -33,10 +33,10 @@ function Label(props) {
   return <div className="controls-label">{props.children}</div>;
 }
 
-function LastPressedKey(props){
+function LastPressedKey(props) {
   const lastPressedKey = useGetKey();
-  const {maxLength} = props;
-  return(<span>{lastPressedKey.slice(0, maxLength)}</span>)
+  const { maxLength } = props;
+  return <span>{lastPressedKey.slice(0, maxLength)}</span>;
 }
 
 function Controls(props) {
@@ -46,14 +46,14 @@ function Controls(props) {
       <div className="controls2">
         <div className="controls2__spacer" />
         <div className="controls2__bookmark controls2__box">
+          <div className="controls2__bookmark__offset">
+            <Input />
+          </div>
           <div className="controls2__bookmark__add">
             <Button icon={faBookmark} />
           </div>
           <div className="controls2__bookmark__remove">
             <Button icon={faTimes} />
-          </div>
-          <div className="controls2__bookmark__offset">
-            <Input />
           </div>
           <Label>Bookmark</Label>
         </div>
@@ -73,14 +73,14 @@ function Controls(props) {
         </div>
 
         <div className="controls2__rewind controls2__box">
+          <div className="controls2__rewind__offset">
+            <Input />
+          </div>
           <div className="controls2__rewind__backward">
             <Button icon={faBackward} />
           </div>
           <div className="controls2__rewind__forward">
             <Button icon={faForward} />
-          </div>
-          <div className="controls2__rewind__offset">
-            <Input />
           </div>
           <Label>Rewind</Label>
         </div>
