@@ -57,7 +57,7 @@ function MainLayout() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
-
+  const [activeBookmark, setActiveBookmark] = React.useState(-1)
   return (
     <div className={`page page--${layout}`}>
       <div className={`page__video-row`}>
@@ -69,7 +69,8 @@ function MainLayout() {
         {layout === "row" && (
           <BookmarkHistory
             history={bookmarks}
-            current={1}
+            current={activeBookmark}
+            setActiveBookmark={setActiveBookmark}
             className={`page__video-row__history`}
           />
         )}
@@ -79,7 +80,8 @@ function MainLayout() {
         {layout !== "row" && (
           <BookmarkHistory
             history={bookmarks}
-            current={1}
+            current={activeBookmark}
+            setActiveBookmark={setActiveBookmark}
             className={`page__details-row__history`}
           />
         )}
