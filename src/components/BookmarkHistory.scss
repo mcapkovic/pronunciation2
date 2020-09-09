@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .bookmark-history {
   //   width: 20rem;
   //   margin: auto;
@@ -33,7 +35,7 @@
     color: var(--primary-text);
 
     &:hover {
-      background-color: gray;
+      background-color: var(--black-alpha-10);
     }
   }
 
