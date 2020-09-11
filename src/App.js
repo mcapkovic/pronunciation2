@@ -8,6 +8,8 @@ import BookmarkHistory from "./components/BookmarkHistory";
 import InfoPanel from "./components/InfoPanel";
 import SearchLayout from "./pages/SearchLayout";
 
+import { useCustomReducer } from "./hooks/useCustomReducer";
+
 const bookmarks = [
   { id: 1, time: 305 },
   { id: 2, time: 203 },
@@ -53,13 +55,27 @@ function ControlledPlayer(props) {
   );
 }
 
+const actions = {
+  addOne: (state, action) => {
+    return { ...state, test: state.test + 1 };
+  },
+  removeOne: (state, action) => {
+    return { ...state, test: state.test - 1 };
+  },
+};
+
 function MainLayout() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
-  const [activeBookmark, setActiveBookmark] = React.useState(-1)
+  const [activeBookmark, setActiveBookmark] = React.useState(-1);
+  const [state, { addOne, removeOne }] = useCustomReducer(actions, { test: 0 });
+
   return (
     <div className={`page page--${layout}`}>
+      <button onClick={addOne}>ddddd</button>
+      <button onClick={removeOne}>aaaa</button>
+
       <div className={`page__video-row`}>
         <ControlledPlayer
           className={`page__video-row__video`}
