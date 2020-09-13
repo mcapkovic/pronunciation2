@@ -21,16 +21,21 @@
     }
   }
   .controlled-player__source {
-    background-color: var(--main-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: var(--main-gray);
+    // background-color: red;
     height: 5em;
     // width: 90vw;
     height: 80vh;
     max-width: 90vw;
-    max-height: 40vw;
+    // max-height: 40vw;
+    max-height: calc(50.8vw - 95px);
   }
   &--column {
     .controlled-player__source {
-      max-height: 60vw;
+      max-height: 50.8vw;
       max-width: 100vw;
     }
   }

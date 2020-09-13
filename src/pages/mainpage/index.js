@@ -5,6 +5,7 @@ import Controls from "./Controls";
 import BookmarkHistory from "./BookmarkHistory";
 import InfoPanel from "./InfoPanel";
 import { useCustomReducer } from "../../hooks/useCustomReducer";
+import Player from './Player';
 
 const bookmarks = [
   { id: 1, time: 305 },
@@ -45,7 +46,7 @@ function ControlledPlayer(props) {
   const { layout, setLayoutButton, className } = props;
   return (
     <div className={`controlled-player ${className}`}>
-      <div className={`controlled-player__source`}></div>
+      <div className={`controlled-player__source`}><Player /></div>
       <Controls layout={layout} setLayout={setLayoutButton} />
     </div>
   );
