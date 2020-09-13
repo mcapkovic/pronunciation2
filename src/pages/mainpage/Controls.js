@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
-import { useGetKey } from "../hooks/useGetKey";
+import { useGetKey } from "../../hooks/useGetKey";
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
