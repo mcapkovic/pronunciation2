@@ -1,6 +1,8 @@
 @import "../../styles/variables";
 
 $border: 1px solid var(--main-gray);
+$box-size-regular: 5rem;
+$box-size-small: 4.5rem;
 
 *,
 ::after,
@@ -18,13 +20,13 @@ $border: 1px solid var(--main-gray);
   border-right-width: 0;
   margin-bottom: 3rem;
   &__box {
-    height: 5rem;
-    width: 5rem;
+    height: $box-size-small;
+    width: $box-size-small;
     border-right: $border;
     // font-size: 5em;
   }
   &__spacer {
-    height: 5rem;
+    height: $box-size-small;
     flex-grow: 2;
     // background-color: gray;
     min-width: 0.4rem;
@@ -127,6 +129,15 @@ $border: 1px solid var(--main-gray);
   }
 
   @media only screen and (min-width: 450px) {
+    &__box {
+      height: $box-size-regular;
+      width: $box-size-regular;
+    }
+
+    &__spacer {
+      height: $box-size-regular;
+    }
+
     &__utils {
       display: block;
     }

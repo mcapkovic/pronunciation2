@@ -1,7 +1,7 @@
 .page {
   &__video-row {
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
 
     &__video {
@@ -37,6 +37,12 @@
     .controlled-player__source {
       max-height: 50.8vw;
       max-width: 100vw;
+    }
+  }
+
+  @media only screen and (min-width: 450px) {
+    &__video-row {
+        width: 90%;
     }
   }
 
