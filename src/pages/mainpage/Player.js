@@ -7,9 +7,39 @@ function getVideoSource() {
 }
 
 function Player(props) {
+  const {
+    state: { isSourcePlaying },
+    customDispatch: { toggleSource },
+  } = props;
+
+  const playerState = React.useRef();
+
+  const handleProgress = (e) => {
+    console.log(e);
+
+    console.log("isSourcePlaying", isSourcePlaying);
+  };
+
+  const handlePlay = (e) => {
+    if (!isSourcePlaying) toggleSource();
+  };
+
+  const onPause = (e) => {
+    if (isSourcePlaying) toggleSource();
+  };
+
   return (
     // <div>
-      <ReactPlayer height="calc(99% - 1px)" width="99%" url={getVideoSource()} controls/>
+    <ReactPlayer
+      height="99%"
+      width="99%"
+      url={getVideoSource()}
+      controls
+      playing={isSourcePlaying}
+      //   onProgress={handleProgress}
+      onPause={onPause}
+      onPlay={handlePlay}
+    />
     // </div>
   );
 }

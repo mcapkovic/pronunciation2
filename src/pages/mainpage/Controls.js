@@ -40,7 +40,12 @@ function LastPressedKey(props) {
 }
 
 function Controls(props) {
-  const { layout, setLayout } = props;
+  const {
+    layout,
+    setLayout,
+    state: { isSourcePlaying },
+    customDispatch: { toggleSource },
+  } = props;
   return (
     <div>
       <div className="controls2">
@@ -58,7 +63,10 @@ function Controls(props) {
           <Label>Bookmark</Label>
         </div>
         <div className="controls2__source controls2__box">
-          <Button icon={faPlay} />
+          <Button
+            icon={isSourcePlaying ? faPause : faPlay}
+            onClick={toggleSource}
+          />
 
           <Label>Source</Label>
         </div>

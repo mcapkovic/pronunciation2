@@ -5,7 +5,7 @@ import Controls from "./Controls";
 import BookmarkHistory from "./BookmarkHistory";
 import InfoPanel from "./InfoPanel";
 import { useCustomReducer } from "../../hooks/useCustomReducer";
-import Player from './Player';
+import Player from "./Player";
 
 const bookmarks = [
   { id: 1, time: 305 },
@@ -42,37 +42,44 @@ const bookmarks = [
   { id: 32, time: 603 },
 ];
 
+const actions = {
+  toggleSource: (state, action) => {
+    return {
+      ...state,
+      isSourcePlaying: !state.isSourcePlaying,
+    };
+  },
+};
+
 function ControlledPlayer(props) {
   const { layout, setLayoutButton, className } = props;
+  const [state, customDispatch] = useCustomReducer(actions, {
+    isSourcePlaying: false,
+  });
+
   return (
     <div className={`controlled-player ${className}`}>
-      <div className={`controlled-player__source`}><Player /></div>
-      <Controls layout={layout} setLayout={setLayoutButton} />
+      <div className={`controlled-player__source`}>
+        <Player state={state} customDispatch={customDispatch} />
+      </div>
+      <Controls
+        state={state}
+        customDispatch={customDispatch}
+        layout={layout}
+        setLayout={setLayoutButton}
+      />
     </div>
   );
 }
-
-const actions = {
-  addOne: (state, action) => {
-    return { ...state, test: state.test + 1 };
-  },
-  removeOne: (state, action) => {
-    return { ...state, test: state.test - 1 };
-  },
-};
 
 function MainPage() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
   const [activeBookmark, setActiveBookmark] = React.useState(-1);
-  const [state, { addOne, removeOne }] = useCustomReducer(actions, { test: 0 });
 
   return (
     <div className={`page page--${layout}`}>
-      <button onClick={addOne}>ddddd</button>
-      <button onClick={removeOne}>aaaa</button>
-
       <div className={`page__video-row`}>
         <ControlledPlayer
           className={`page__video-row__video`}
