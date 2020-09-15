@@ -49,12 +49,19 @@ const actions = {
       isSourcePlaying: !state.isSourcePlaying,
     };
   },
+  setRewindValue: (state, action) => {
+    return {
+      ...state,
+      rewindValue: action.payload,
+    };
+  },
 };
 
 function ControlledPlayer(props) {
   const { layout, setLayoutButton, className } = props;
   const [state, customDispatch] = useCustomReducer(actions, {
     isSourcePlaying: false,
+    rewindValue: 1,
   });
 
   return (
