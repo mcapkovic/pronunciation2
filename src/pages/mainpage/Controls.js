@@ -44,7 +44,7 @@ function Controls(props) {
     layout,
     setLayout,
     state: { isSourcePlaying, rewindValue },
-    customDispatch: { toggleSource, setRewindValue },
+    customDispatch: { toggleSource, setRewindValue, goForward, goBackward },
   } = props;
   return (
     <div>
@@ -82,13 +82,16 @@ function Controls(props) {
 
         <div className="controls2__rewind controls2__box">
           <div className="controls2__rewind__offset">
-            <Input value={rewindValue} onChange={e => setRewindValue(e.target.value)} />
+            <Input
+              value={rewindValue}
+              onChange={(e) => setRewindValue(e.target.value)}
+            />
           </div>
           <div className="controls2__rewind__backward">
-            <Button icon={faBackward} />
+            <Button icon={faBackward} onClick={goBackward} />
           </div>
           <div className="controls2__rewind__forward">
-            <Button icon={faForward} />
+            <Button icon={faForward} onClick={goForward} />
           </div>
           <Label>Rewind</Label>
         </div>

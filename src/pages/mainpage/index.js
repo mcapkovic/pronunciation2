@@ -55,6 +55,18 @@ const actions = {
       rewindValue: action.payload,
     };
   },
+  goForward: (state, action) => {
+    return {
+      ...state,
+      forwardTrigger: state.forwardTrigger + 1,
+    };
+  },
+  goBackward: (state, action) => {
+    return {
+      ...state,
+      backwardTrigger: state.backwardTrigger + 1,
+    };
+  },
 };
 
 function ControlledPlayer(props) {
@@ -62,6 +74,8 @@ function ControlledPlayer(props) {
   const [state, customDispatch] = useCustomReducer(actions, {
     isSourcePlaying: false,
     rewindValue: 1,
+    forwardTrigger: 0,
+    backwardTrigger: 0,
   });
 
   return (
