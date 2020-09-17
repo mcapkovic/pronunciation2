@@ -12,10 +12,12 @@ import {
   faExpandAlt,
   faCompressAlt,
   faPlus,
+  faBookmark as faBookmarkSolid,
+  faUndoAlt,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
+import { BookmarksContext } from "./index";
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
@@ -54,6 +56,26 @@ function Controls(props) {
       setBookmarkOffset,
     },
   } = props;
+
+  const {
+    bookmarks,
+    setActiveBookmark,
+    activeBookmark,
+    setBookmarks,
+  } = React.useContext(BookmarksContext);
+
+  const lastValidBookmark = React.useRef(-1);
+  if (activeBookmark !== -1) lastValidBookmark.current = activeBookmark;
+  const onBookmarkToggle = () => {
+    if (activeBookmark !== -1) return setActiveBookmark(-1);
+    const index = bookmarks.findIndex(
+      (bookmark) => bookmark.id === lastValidBookmark.current
+    );
+    if (index >= 0) return setActiveBookmark(lastValidBookmark.current);
+    setActiveBookmark(bookmarks[0].id);
+  };
+
+  console.log({ activeBookmark });
   return (
     <div>
       <div className="controls2">
@@ -70,14 +92,23 @@ function Controls(props) {
             {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
             <Button onClick={addBookmark} icon={faPlus} />
           </div>
-          <div className="controls2__bookmark__remove">
-            <Button icon={faTimes} />
+          <div className="controls2__bookmark__toggle">
+            <Button
+              onClick={onBookmarkToggle}
+              icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid}
+            />
           </div>
           <Label>Bookmark</Label>
         </div>
         <div className="controls2__source controls2__box">
           <Button
-            icon={isSourcePlaying ? faPause : faPlay}
+            icon={
+              isSourcePlaying
+                ? faPause
+                : activeBookmark === -1
+                ? faPlay
+                : faUndoAlt
+            }
             onClick={toggleSource}
           />
 

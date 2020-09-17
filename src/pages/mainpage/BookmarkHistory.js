@@ -19,7 +19,7 @@ function ButtonGroup(props) {
   };
 
   const removeBookmark = () => {
-    if (bookmark.id === selected) setActiveBookmark(-1);
+    if (selected) setActiveBookmark(-1);
     setBookmarks(bookmarks.filter((bkmrk) => bkmrk.id !== bookmark.id));
   };
 
