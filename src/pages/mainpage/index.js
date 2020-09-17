@@ -7,7 +7,7 @@ import InfoPanel from "./InfoPanel";
 import { useCustomReducer } from "../../hooks/useCustomReducer";
 import Player from "./Player";
 
-const bookmarks = [
+const initialBookmarks = [
   { id: 1, time: 305 },
   { id: 2, time: 203 },
   { id: 3, time: 603 },
@@ -93,43 +93,43 @@ function ControlledPlayer(props) {
   );
 }
 
+export const BookmarksContext = React.createContext({});
+
 function MainPage() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
+
   const [activeBookmark, setActiveBookmark] = React.useState(-1);
+  const [bookmarks, setBookmarks] = React.useState(initialBookmarks);
+
+  const provider = React.useMemo(() => {
+    return { bookmarks, setBookmarks, activeBookmark, setActiveBookmark };
+  }, [bookmarks, setBookmarks, activeBookmark, setActiveBookmark]);
 
   return (
-    <div className={`page page--${layout}`}>
-      <div className={`page__video-row`}>
-        <ControlledPlayer
-          className={`page__video-row__video`}
-          layout={layout}
-          setLayoutButton={setLayoutButton}
-        />
-        {layout === "row" && (
-          <BookmarkHistory
-            history={bookmarks}
-            current={activeBookmark}
-            setActiveBookmark={setActiveBookmark}
-            className={`page__video-row__history`}
+    <BookmarksContext.Provider value={provider}>
+      <div className={`page page--${layout}`}>
+        <div className={`page__video-row`}>
+          <ControlledPlayer
+            className={`page__video-row__video`}
+            layout={layout}
+            setLayoutButton={setLayoutButton}
           />
-        )}
-      </div>
+          {layout === "row" && (
+            <BookmarkHistory className={`page__video-row__history`} />
+          )}
+        </div>
 
-      <div className="page__details-row">
-        {layout !== "row" && (
-          <BookmarkHistory
-            history={bookmarks}
-            current={activeBookmark}
-            setActiveBookmark={setActiveBookmark}
-            className={`page__details-row__history`}
-          />
-        )}
-        <InfoPanel className="page__details-row__info" />
+        <div className="page__details-row">
+          {layout !== "row" && (
+            <BookmarkHistory className={`page__details-row__history`} />
+          )}
+          <InfoPanel className="page__details-row__info" />
+        </div>
+        <div className="page__bottom-spacer" />
       </div>
-      <div className="page__bottom-spacer" />
-    </div>
+    </BookmarksContext.Provider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import { BookmarksContext } from "./index";
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
@@ -7,6 +8,8 @@ function getVideoSource() {
 }
 
 function Player(props) {
+  const { bookmarks } = React.useContext(BookmarksContext);
+
   const {
     state: { isSourcePlaying, rewindValue, forwardTrigger, backwardTrigger },
     customDispatch: { toggleSource },
@@ -49,17 +52,17 @@ function Player(props) {
 
   return (
     // <div>
-      <ReactPlayer
-        ref={player}
-        height="99%"
-        width="99%"
-        url={getVideoSource()}
-        controls
-        playing={isSourcePlaying}
-        //   onProgress={handleProgress}
-        onPause={onPause}
-        onPlay={handlePlay}
-      />
+    <ReactPlayer
+      ref={player}
+      height="99%"
+      width="99%"
+      url={getVideoSource()}
+      controls
+      playing={isSourcePlaying}
+      //   onProgress={handleProgress}
+      onPause={onPause}
+      onPlay={handlePlay}
+    />
     // </div>
   );
 }

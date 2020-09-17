@@ -1,5 +1,6 @@
 import React from "react";
 import "./BookmarkHistory.scss";
+import { BookmarksContext } from "./index";
 
 function ButtonGroup(props) {
   const { selected, setActiveBookmark, bookmark } = props;
@@ -32,15 +33,17 @@ function Title(props) {
 }
 
 function BookmarkHistory(props) {
-  const { current, history, className, setActiveBookmark } = props;
+  const { className } = props;
+  const { bookmarks, setActiveBookmark, activeBookmark } = React.useContext(BookmarksContext);
+
   return (
     <div className={`bookmark-history ${className}`}>
       <Title>Bookmarks history</Title>
       <ul className="bookmark-history__list">
-        {history.map((bookmark) => (
+        {bookmarks.map((bookmark) => (
           <li key={bookmark.id} className="bookmark-history__list__row">
             <ButtonGroup
-              selected={current === bookmark.id}
+              selected={activeBookmark === bookmark.id}
               setActiveBookmark={setActiveBookmark}
               bookmark={bookmark}
             >
