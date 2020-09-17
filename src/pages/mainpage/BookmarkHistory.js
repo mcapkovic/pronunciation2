@@ -3,7 +3,13 @@ import "./BookmarkHistory.scss";
 import { BookmarksContext } from "./index";
 
 function ButtonGroup(props) {
-  const { selected, setActiveBookmark, bookmark } = props;
+  const {
+    selected,
+    setActiveBookmark,
+    bookmark,
+    setBookmarks,
+    bookmarks,
+  } = props;
   const onBookmarkClick = (e) => {
     if (selected) {
       setActiveBookmark(-1);
@@ -11,6 +17,12 @@ function ButtonGroup(props) {
       setActiveBookmark(bookmark.id);
     }
   };
+
+  const removeBookmark = () => {
+    if (bookmark.id === selected) setActiveBookmark(-1);
+    setBookmarks(bookmarks.filter((bkmrk) => bkmrk.id !== bookmark.id));
+  };
+
   return (
     <div
       className={`history-button-group ${
@@ -23,7 +35,10 @@ function ButtonGroup(props) {
       >
         {props.children}
       </button>
-      <button className="history-button-group___clear"> x</button>
+      <button onClick={removeBookmark} className="history-button-group___clear">
+        {" "}
+        x
+      </button>
     </div>
   );
 }
@@ -34,7 +49,12 @@ function Title(props) {
 
 function BookmarkHistory(props) {
   const { className } = props;
-  const { bookmarks, setActiveBookmark, activeBookmark } = React.useContext(BookmarksContext);
+  const {
+    bookmarks,
+    setActiveBookmark,
+    activeBookmark,
+    setBookmarks,
+  } = React.useContext(BookmarksContext);
 
   return (
     <div className={`bookmark-history ${className}`}>
@@ -45,7 +65,9 @@ function BookmarkHistory(props) {
             <ButtonGroup
               selected={activeBookmark === bookmark.id}
               setActiveBookmark={setActiveBookmark}
+              setBookmarks={setBookmarks}
               bookmark={bookmark}
+              bookmarks={bookmarks}
             >
               {bookmark.time}
             </ButtonGroup>

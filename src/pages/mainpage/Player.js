@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { BookmarksContext } from "./index";
+import createUUID from "../../utils/createUUID";
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
@@ -8,10 +9,19 @@ function getVideoSource() {
 }
 
 function Player(props) {
-  const { bookmarks } = React.useContext(BookmarksContext);
+  const { bookmarks, setBookmarks, setActiveBookmark } = React.useContext(
+    BookmarksContext
+  );
 
   const {
-    state: { isSourcePlaying, rewindValue, forwardTrigger, backwardTrigger },
+    state: {
+      isSourcePlaying,
+      rewindValue,
+      forwardTrigger,
+      backwardTrigger,
+      bookmarkOffset,
+      addBookmarkTrigger,
+    },
     customDispatch: { toggleSource },
   } = props;
 
@@ -21,14 +31,28 @@ function Player(props) {
   const playerState = React.useRef();
 
   useEffect(() => {
-    console.log("eeee", player.current.getCurrentTime());
+    if (addBookmarkTrigger === 0) return;
+    const current = player.current.getCurrentTime();
+    console.log(current);
+    console.log(bookmarks);
+    const newBookmark = {
+      id: createUUID(),
+      time: Number(current) + Number(bookmarkOffset),
+    };
+    setBookmarks([newBookmark, ...bookmarks]);
+    setActiveBookmark(newBookmark.id);
+    // player.current.seekTo(Number(current) + Number(bookmarkOffset));
+  }, [addBookmarkTrigger]);
+
+  useEffect(() => {
+    if (addBookmarkTrigger === 0) return;
 
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) + Number(rewindValue));
   }, [forwardTrigger]);
 
   useEffect(() => {
-    console.log("eeee", player.current.getCurrentTime());
+    if (addBookmarkTrigger === 0) return;
 
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) - Number(rewindValue));
@@ -47,8 +71,6 @@ function Player(props) {
   const onPause = (e) => {
     if (isSourcePlaying) toggleSource();
   };
-
-  const [play, setPlay] = React.useState(false);
 
   return (
     // <div>

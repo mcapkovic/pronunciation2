@@ -11,6 +11,7 @@ import {
   faForward,
   faExpandAlt,
   faCompressAlt,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
@@ -43,8 +44,15 @@ function Controls(props) {
   const {
     layout,
     setLayout,
-    state: { isSourcePlaying, rewindValue },
-    customDispatch: { toggleSource, setRewindValue, goForward, goBackward },
+    state: { isSourcePlaying, rewindValue, bookmarkOffset },
+    customDispatch: {
+      toggleSource,
+      setRewindValue,
+      goForward,
+      goBackward,
+      addBookmark,
+      setBookmarkOffset,
+    },
   } = props;
   return (
     <div>
@@ -52,10 +60,15 @@ function Controls(props) {
         <div className="controls2__spacer" />
         <div className="controls2__bookmark controls2__box">
           <div className="controls2__bookmark__offset">
-            <Input />
+            <Input
+              type="number"
+              value={bookmarkOffset}
+              onChange={(e) => setBookmarkOffset(e.target.value)}
+            />
           </div>
           <div className="controls2__bookmark__add">
-            <Button icon={faBookmark} />
+            {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
+            <Button onClick={addBookmark} icon={faPlus} />
           </div>
           <div className="controls2__bookmark__remove">
             <Button icon={faTimes} />
@@ -83,6 +96,7 @@ function Controls(props) {
         <div className="controls2__rewind controls2__box">
           <div className="controls2__rewind__offset">
             <Input
+              type="number"
               value={rewindValue}
               onChange={(e) => setRewindValue(e.target.value)}
             />
