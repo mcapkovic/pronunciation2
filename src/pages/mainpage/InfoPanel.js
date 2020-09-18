@@ -53,7 +53,7 @@ function InfoPanel(props) {
   const { className } = props;
   return (
     <div className={`info-panel ${className}`}>
-      <Title modifier="source">Source address</Title>
+      <Title modifier="source">Video url</Title>
       <VideoSource />
       <br />
       <Title>Keyboard shortcuts</Title>

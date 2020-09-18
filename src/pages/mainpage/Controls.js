@@ -95,7 +95,7 @@ function Controls(props) {
             onClick={toggleSource}
           />
 
-          <Label>Source</Label>
+          <Label>Video</Label>
         </div>
         <div className="controls2__record controls2__box">
           <div className="controls2__record__sound"></div>
