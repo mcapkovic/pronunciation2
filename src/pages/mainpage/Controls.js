@@ -75,7 +75,6 @@ function Controls(props) {
     setActiveBookmark(bookmarks[0].id);
   };
 
-  console.log({ activeBookmark });
   return (
     <div>
       <div className="controls2">
@@ -115,6 +114,7 @@ function Controls(props) {
           <Label>Source</Label>
         </div>
         <div className="controls2__record controls2__box">
+          <div className="controls2__record__sound"></div>
           <div className="controls2__record__mic">
             <Button icon={faMicrophone} />
           </div>
