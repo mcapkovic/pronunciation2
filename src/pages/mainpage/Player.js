@@ -33,11 +33,11 @@ function Player(props) {
   useEffect(() => {
     if (addBookmarkTrigger === 0) return;
     const current = player.current.getCurrentTime();
-    console.log(current);
-    console.log(bookmarks);
+    const newTime =
+      Math.round((Number(current) + Number(bookmarkOffset)) * 1000) / 1000;
     const newBookmark = {
       id: createUUID(),
-      time: Number(current) + Number(bookmarkOffset),
+      time: newTime >= 0 ? newTime : 0,
     };
     setBookmarks([newBookmark, ...bookmarks]);
     setActiveBookmark(newBookmark.id);

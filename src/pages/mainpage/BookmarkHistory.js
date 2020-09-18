@@ -1,6 +1,7 @@
 import React from "react";
 import "./BookmarkHistory.scss";
 import { BookmarksContext } from "./index";
+import { toMinutes } from "../../utils/convertTime";
 
 function ButtonGroup(props) {
   const {
@@ -36,7 +37,6 @@ function ButtonGroup(props) {
         {props.children}
       </button>
       <button onClick={removeBookmark} className="history-button-group___clear">
-        {" "}
         x
       </button>
     </div>
@@ -69,7 +69,7 @@ function BookmarkHistory(props) {
               bookmark={bookmark}
               bookmarks={bookmarks}
             >
-              {bookmark.time}
+              {toMinutes(bookmark.time)}
             </ButtonGroup>
           </li>
         ))}
