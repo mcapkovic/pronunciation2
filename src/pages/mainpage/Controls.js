@@ -54,6 +54,7 @@ function Controls(props) {
       goBackward,
       addBookmark,
       setBookmarkOffset,
+      playBookmark,
     },
   } = props;
 
@@ -63,17 +64,6 @@ function Controls(props) {
     activeBookmark,
     setBookmarks,
   } = React.useContext(BookmarksContext);
-
-  const lastValidBookmark = React.useRef(-1);
-  if (activeBookmark !== -1) lastValidBookmark.current = activeBookmark;
-  const onBookmarkToggle = () => {
-    if (activeBookmark !== -1) return setActiveBookmark(-1);
-    const index = bookmarks.findIndex(
-      (bookmark) => bookmark.id === lastValidBookmark.current
-    );
-    if (index >= 0) return setActiveBookmark(lastValidBookmark.current);
-    setActiveBookmark(bookmarks[0].id);
-  };
 
   return (
     <div>
@@ -93,7 +83,7 @@ function Controls(props) {
           </div>
           <div className="controls2__bookmark__toggle">
             <Button
-              onClick={onBookmarkToggle}
+              onClick={playBookmark}
               icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid}
             />
           </div>
@@ -101,13 +91,7 @@ function Controls(props) {
         </div>
         <div className="controls2__source controls2__box">
           <Button
-            icon={
-              isSourcePlaying
-                ? faPause
-                : activeBookmark === -1
-                ? faPlay
-                : faUndoAlt
-            }
+            icon={isSourcePlaying ? faPause : faPlay}
             onClick={toggleSource}
           />
 

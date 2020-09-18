@@ -50,6 +50,13 @@ const actions = {
       bookmarkOffset: action.payload,
     };
   },
+  playBookmark: (state, action) => {
+    return {
+      ...state,
+      playBookmarkTrigger: state.playBookmarkTrigger + 1,
+      isSourcePlaying: true,
+    };
+  },
 };
 
 function ControlledPlayer(props) {
@@ -61,6 +68,7 @@ function ControlledPlayer(props) {
     backwardTrigger: 0,
     addBookmarkTrigger: 0,
     bookmarkOffset: -1,
+    playBookmarkTrigger: 0,
   });
 
   return (

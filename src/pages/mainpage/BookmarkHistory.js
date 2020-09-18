@@ -12,11 +12,8 @@ function ButtonGroup(props) {
     bookmarks,
   } = props;
   const onBookmarkClick = (e) => {
-    if (selected) {
-      setActiveBookmark(-1);
-    } else {
-      setActiveBookmark(bookmark.id);
-    }
+    if(selected)  return;
+    setActiveBookmark(bookmark.id);
   };
 
   const removeBookmark = () => {

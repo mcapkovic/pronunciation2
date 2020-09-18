@@ -9,9 +9,12 @@ function getVideoSource() {
 }
 
 function Player(props) {
-  const { bookmarks, setBookmarks, setActiveBookmark } = React.useContext(
-    BookmarksContext
-  );
+  const {
+    bookmarks,
+    setBookmarks,
+    activeBookmark,
+    setActiveBookmark,
+  } = React.useContext(BookmarksContext);
 
   const {
     state: {
@@ -21,6 +24,7 @@ function Player(props) {
       backwardTrigger,
       bookmarkOffset,
       addBookmarkTrigger,
+      playBookmarkTrigger,
     },
     customDispatch: { toggleSource },
   } = props;
@@ -30,6 +34,23 @@ function Player(props) {
 
   const playerState = React.useRef();
 
+  // play bookmark
+  useEffect(() => {
+    if (bookmarks.length === 0 || playBookmarkTrigger === 0) return;
+
+    if (activeBookmark === -1) {
+      player.current.seekTo(bookmarks[0].time);
+      setActiveBookmark(bookmarks[0].id);
+    } else {
+      const index = bookmarks.findIndex(
+        (bookmark) => bookmark.id === activeBookmark
+      );
+      if (index < 0) return;
+      player.current.seekTo(bookmarks[index].time);
+    }
+  }, [playBookmarkTrigger]);
+
+  // add bookmark
   useEffect(() => {
     if (addBookmarkTrigger === 0) return;
     const current = player.current.getCurrentTime();
@@ -41,9 +62,9 @@ function Player(props) {
     };
     setBookmarks([newBookmark, ...bookmarks]);
     setActiveBookmark(newBookmark.id);
-    // player.current.seekTo(Number(current) + Number(bookmarkOffset));
   }, [addBookmarkTrigger]);
 
+  // rewind forward
   useEffect(() => {
     if (addBookmarkTrigger === 0) return;
 
@@ -51,6 +72,7 @@ function Player(props) {
     player.current.seekTo(Number(current) + Number(rewindValue));
   }, [forwardTrigger]);
 
+  // rewin backward
   useEffect(() => {
     if (addBookmarkTrigger === 0) return;
 
