@@ -1,0 +1,10 @@
+.recorder{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    &__mic{
+        height: 100%;
+        position: absolute;
+        left: -50px;
+    }
+}

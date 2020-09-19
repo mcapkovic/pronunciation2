@@ -14,7 +14,9 @@
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-audio-player": "^0.13.0",
     "react-dom": "^16.13.1",
+    "react-mic": "^12.4.6",
     "react-player": "^2.6.2",
     "react-scripts": "3.4.3"
   },

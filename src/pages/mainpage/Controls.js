@@ -18,6 +18,7 @@ import {
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
 import { BookmarksContext } from "./index";
+import Record from "./Recorder";
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
@@ -65,6 +66,21 @@ function Controls(props) {
     setBookmarks,
   } = React.useContext(BookmarksContext);
 
+  const [isRecording, setIsRecording] = React.useState(false);
+  const [isRecordPlaying, setIsRecordPlaying] = React.useState(false);
+
+  const toggleRecording = () => {
+    if (isSourcePlaying) toggleSource();
+    if (isRecording) setIsRecordPlaying(true);
+    if (!isRecording) setIsRecordPlaying(false);
+    setIsRecording(!isRecording);
+  };
+  const toggleRecordPlay = () => {
+    if (isSourcePlaying) toggleSource();
+    setIsRecording(false);
+    setIsRecordPlaying(!isRecordPlaying);
+  };
+
   return (
     <div>
       <div className="controls2">
@@ -98,12 +114,24 @@ function Controls(props) {
           <Label>Video</Label>
         </div>
         <div className="controls2__record controls2__box">
-          <div className="controls2__record__sound"></div>
+          <div className="controls2__record__sound">
+            <Record
+              isRecording={isRecording}
+              setIsRecordPlaying={setIsRecordPlaying}
+              isRecordPlaying={isRecordPlaying}
+            />
+          </div>
           <div className="controls2__record__mic">
-            <Button icon={faMicrophone} />
+            <Button
+              onClick={toggleRecording}
+              icon={isRecording ?  faStop :faMicrophone }
+            />
           </div>
           <div className="controls2__record__play">
-            <Button icon={faPlay} />
+            <Button
+              onClick={toggleRecordPlay}
+              icon={isRecordPlaying ?  faStop: faPlay }
+            />
           </div>
           <Label>Record</Label>
         </div>
