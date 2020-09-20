@@ -4,7 +4,10 @@
   align-items: center;
   height: 80vh;
   flex-direction: column;
-
+  &__title {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   &__search {
     position: relative;
     max-width: 600px;
@@ -15,7 +18,7 @@
       padding: 10px 40px 10px 15px;
       outline: none;
       border: 1px solid #cccccc;
-      
+
       &:focus,
       &:hover {
         box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);

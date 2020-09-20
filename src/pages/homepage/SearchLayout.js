@@ -21,7 +21,7 @@ function SearchLayout(props) {
 
   return (
     <div className="search-page">
-      <h1>Hello, paste YouTube url to the input.</h1>
+      <h1 className="search-page__title">Hello, paste an YouTube url to the input.</h1>
       <div className="search-page__search">
         <input
         className="search-page__search__input"
