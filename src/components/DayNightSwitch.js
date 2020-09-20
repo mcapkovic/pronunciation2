@@ -108,9 +108,12 @@ function DayNightSwitch() {
   };
 
   React.useEffect(() => {
-    firstRender.current = false;
     const savedValue = localStorage.getItem("theme-range") || 0;
     inputRef.current.value = savedValue;
+  }, []);
+
+  React.useEffect(() => {
+    firstRender.current = false;
   }, []);
 
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import "./InfoPanel.scss";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DayNightSwitch from "./DayNightSwitch";
+import DayNightSwitch from "../../components/DayNightSwitch";
 
 function Title(props) {
   const { modifier } = props;
