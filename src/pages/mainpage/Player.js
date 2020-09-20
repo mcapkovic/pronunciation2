@@ -94,7 +94,6 @@ function Player(props) {
   };
 
   return (
-    // <div>
     <ReactPlayer
       ref={player}
       height="99%"
@@ -106,7 +105,6 @@ function Player(props) {
       onPause={onPause}
       onPlay={handlePlay}
     />
-    // </div>
   );
 }
 
