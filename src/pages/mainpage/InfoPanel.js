@@ -56,6 +56,10 @@ function InfoPanel(props) {
       <Title modifier="source">Video url</Title>
       <VideoSource />
       <br />
+      {/* <Title>Utils</Title>
+      <button >Load previous bookmarks</button>
+      <br />
+      <br /> */}
       <Title>Keyboard shortcuts</Title>
       <ul>
         <li>a - something</li>

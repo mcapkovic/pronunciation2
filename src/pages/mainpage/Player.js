@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { BookmarksContext } from "./index";
 import createUUID from "../../utils/createUUID";
+import { ITEM_BOOKMARKS } from "../../constants";
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
@@ -60,8 +61,10 @@ function Player(props) {
       id: createUUID(),
       time: newTime >= 0 ? newTime : 0,
     };
-    setBookmarks([newBookmark, ...bookmarks]);
+    const newBookmarks = [newBookmark, ...bookmarks];
+    setBookmarks(newBookmarks);
     setActiveBookmark(newBookmark.id);
+    localStorage.setItem(ITEM_BOOKMARKS, JSON.stringify(newBookmarks));
   }, [addBookmarkTrigger]);
 
   // rewind forward

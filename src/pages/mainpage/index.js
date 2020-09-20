@@ -87,13 +87,18 @@ function ControlledPlayer(props) {
 
 export const BookmarksContext = React.createContext({});
 
+function getBookmarks() {
+  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  return savedBookmarks || [];
+}
+
 function MainPage() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
 
   const [activeBookmark, setActiveBookmark] = React.useState(-1);
-  const [bookmarks, setBookmarks] = React.useState(initialBookmarks);
+  const [bookmarks, setBookmarks] = React.useState([]);
 
   const provider = React.useMemo(() => {
     return { bookmarks, setBookmarks, activeBookmark, setActiveBookmark };

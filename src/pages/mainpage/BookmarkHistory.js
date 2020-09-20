@@ -2,6 +2,7 @@ import React from "react";
 import "./BookmarkHistory.scss";
 import { BookmarksContext } from "./index";
 import { toMinutes } from "../../utils/convertTime";
+import { ITEM_BOOKMARKS } from "../../constants";
 
 function ButtonGroup(props) {
   const {
@@ -12,13 +13,15 @@ function ButtonGroup(props) {
     bookmarks,
   } = props;
   const onBookmarkClick = (e) => {
-    if(selected)  return;
+    if (selected) return;
     setActiveBookmark(bookmark.id);
   };
 
   const removeBookmark = () => {
     if (selected) setActiveBookmark(-1);
-    setBookmarks(bookmarks.filter((bkmrk) => bkmrk.id !== bookmark.id));
+    const newBookmarks = bookmarks.filter((bkmrk) => bkmrk.id !== bookmark.id);
+    setBookmarks(newBookmarks);
+    localStorage.setItem(ITEM_BOOKMARKS, JSON.stringify(newBookmarks));
   };
 
   return (
