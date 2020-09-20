@@ -19,6 +19,7 @@ import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
 import { BookmarksContext } from "./index";
 import Record from "./Recorder";
+import useKeyDown from '../../hooks/useKeyDown'
 
 function Button(props) {
   const { icon, ...buttonProps } = props;
@@ -41,6 +42,14 @@ function LastPressedKey(props) {
   const lastPressedKey = useGetKey();
   const { maxLength } = props;
   return <span>{lastPressedKey.slice(0, maxLength)}</span>;
+}
+
+function checkFocus() {
+  // if (document.activeElement === document.getElementsByTagName("iframe")[0]) {
+  if (document.activeElement.id === "widget2") {
+    const element = document.querySelector(".controls2");
+    element.focus();
+  }
 }
 
 function Controls(props) {
@@ -81,9 +90,44 @@ function Controls(props) {
     setIsRecordPlaying(!isRecordPlaying);
   };
 
+  useKeyDown('ArrowRight', () => {
+    goForward()
+  })
+
+  useKeyDown('ArrowLeft', () => {
+    goBackward()
+  })
+
+  useKeyDown('w', () => {
+    toggleSource()
+  })
+
+  useKeyDown('a', () => {
+    addBookmark()
+  })
+
+  useKeyDown('s', () => {
+    playBookmark()
+  })
+
+  useKeyDown('d', () => {
+    toggleRecording()
+  }, [isRecording, isSourcePlaying])
+
+  useKeyDown('f', () => {
+    toggleRecordPlay()
+  },[isRecordPlaying, isSourcePlaying])
+
+
+
+  React.useEffect(() => {
+    const id = window.setInterval(checkFocus, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <div>
-      <div className="controls2">
+      <div className="controls2" tabIndex={0}>
         <div className="controls2__spacer" />
         <div className="controls2__bookmark controls2__box">
           <div className="controls2__bookmark__offset">
@@ -124,13 +168,13 @@ function Controls(props) {
           <div className="controls2__record__mic">
             <Button
               onClick={toggleRecording}
-              icon={isRecording ?  faStop :faMicrophone }
+              icon={isRecording ? faStop : faMicrophone}
             />
           </div>
           <div className="controls2__record__play">
             <Button
               onClick={toggleRecordPlay}
-              icon={isRecordPlaying ?  faStop: faPlay }
+              icon={isRecordPlaying ? faStop : faPlay}
             />
           </div>
           <Label>Record</Label>

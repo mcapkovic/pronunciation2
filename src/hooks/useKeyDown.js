@@ -23,3 +23,5 @@ export function useKeyDown(targetKey, callback, dependencies = []) {
 
   return lastPressedKey.current;
 }
+
+export default useKeyDown;

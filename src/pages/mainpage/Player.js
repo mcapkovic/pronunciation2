@@ -66,15 +66,14 @@ function Player(props) {
 
   // rewind forward
   useEffect(() => {
-    if (addBookmarkTrigger === 0) return;
-
+    if (forwardTrigger === 0) return;
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) + Number(rewindValue));
   }, [forwardTrigger]);
 
   // rewin backward
   useEffect(() => {
-    if (addBookmarkTrigger === 0) return;
+    if (backwardTrigger === 0) return;
 
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) - Number(rewindValue));

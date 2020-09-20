@@ -8,9 +8,8 @@ import { useCustomReducer } from "../../hooks/useCustomReducer";
 import Player from "./Player";
 
 const initialBookmarks = [
-  { id: 1, time: 305 },
-  { id: 2, time: 203 },
-
+  { id: 1, time: 438.5 },
+  { id: 2, time: 443 },
 ];
 
 const actions = {

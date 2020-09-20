@@ -22,10 +22,9 @@ function Recorder(props) {
         style={{ height: "10px" }}
         record={isRecording}
         onStop={onStop}
-        // onData={onData}
         strokeColor="gray"
-        backgroundColor="#ffffff"
-        visualSetting="frequencyBars"
+        // visualSetting="frequencyBars"
+        backgroundColor='#00000000'
       />
 
       <ReactAudioPlayer
