@@ -139,12 +139,12 @@ function Controls(props) {
           </div>
           <div className="controls2__bookmark__add">
             {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
-            <Button onClick={addBookmark} icon={faPlus} />
+            <Button onClick={addBookmark} icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid} />
           </div>
           <div className="controls2__bookmark__toggle">
             <Button
               onClick={playBookmark}
-              icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid}
+              icon={faPlay}
             />
           </div>
           <Label>Bookmark</Label>
