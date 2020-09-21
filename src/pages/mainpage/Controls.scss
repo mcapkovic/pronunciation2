@@ -80,12 +80,14 @@ $box-size-small: 4.5rem;
       border-right-width: 0;
     }
     &__mic {
-      flex-grow: 1;
+      // flex-grow: 1;
       border-right: $border;
+      width: 50%;
       height: 50%;
     }
     &__play {
-      flex-grow: 1;
+      // flex-grow: 1;
+      width: 50%;
       height: 50%;
     }
   }
