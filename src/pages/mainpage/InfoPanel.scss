@@ -1,5 +1,11 @@
 @import "../../styles/variables";
 
+.info-panel {
+  &__section {
+    margin-bottom: 1rem;
+  }
+}
+
 .video-source {
   // display: flex;
   // margin: 0.3rem 0 0 0;
@@ -31,7 +37,9 @@
   padding: 0.2rem 0;
   border-bottom: 1px solid var(--title-border-color);
   font-weight: 700;
+  margin-bottom: 0.5em;
   &--source {
     border: none;
+    margin-bottom: 0;
   }
 }

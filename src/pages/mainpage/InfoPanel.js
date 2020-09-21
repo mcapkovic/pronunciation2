@@ -48,28 +48,36 @@ function VideoSource(props) {
   );
 }
 
-
 function InfoPanel(props) {
   const { className } = props;
   return (
     <div className={`info-panel ${className}`}>
-      <Title modifier="source">Video url</Title>
-      <VideoSource />
-      <br />
+      <div className="info-panel__section">
+        <Title modifier="source">Video url</Title>
+        <VideoSource />
+      </div>
+      {/* <br /> */}
       {/* <Title>Utils</Title>
       <button >Load previous bookmarks</button>
       <br />
       <br /> */}
-      <Title>Keyboard shortcuts</Title>
-      <ul>
-        <li>a - something</li>
+      <div className="info-panel__section">
+        <Title>Keyboard shortcuts</Title>
+        <div>a - something</div>
+        <div>s - something</div>
+        <div>d - something</div>
+        {/* <ul>
+          <li>a - something</li>
 
-        <li>s - something</li>
-        <li>d - something</li>
-      </ul>
-      <br />
-      <Title>Day Night Switch</Title>
-      <DayNightSwitch />
+          <li>s - something</li>
+          <li>d - something</li>
+        </ul> */}
+      </div>
+
+      <div className="info-panel__section">
+        <Title>Day Night Switch</Title>
+        <DayNightSwitch />
+      </div>
     </div>
   );
 }
