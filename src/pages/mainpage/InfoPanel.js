@@ -3,6 +3,7 @@ import "./InfoPanel.scss";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
+import BookmarksLoad from './BookmarksLoad';
 
 function Title(props) {
   const { modifier } = props;
@@ -56,11 +57,12 @@ function InfoPanel(props) {
         <Title modifier="source">Video url</Title>
         <VideoSource />
       </div>
-      {/* <br /> */}
-      {/* <Title>Utils</Title>
-      <button >Load previous bookmarks</button>
-      <br />
-      <br /> */}
+
+      <div className="info-panel__section">
+        <Title>Utils</Title>
+        < BookmarksLoad />
+      </div>
+
       <div className="info-panel__section">
         <Title>Keyboard shortcuts</Title>
         <div>a - add a bookmark</div>
