@@ -98,23 +98,23 @@ function Controls(props) {
     goBackward()
   })
 
-  useKeyDown('w', () => {
+  useKeyDown('d', () => {
     toggleSource()
   })
 
-  useKeyDown('a', () => {
+  useKeyDown('r', () => {
     addBookmark()
   })
 
-  useKeyDown('s', () => {
+  useKeyDown('f', () => {
     playBookmark()
   })
 
-  useKeyDown('d', () => {
+  useKeyDown('a', () => {
     toggleRecording()
   }, [isRecording, isSourcePlaying])
 
-  useKeyDown('f', () => {
+  useKeyDown('s', () => {
     toggleRecordPlay()
   },[isRecordPlaying, isSourcePlaying])
 
@@ -129,34 +129,8 @@ function Controls(props) {
     <div>
       <div className="controls2" tabIndex={0}>
         <div className="controls2__spacer" />
-        <div className="controls2__bookmark controls2__box">
-          <div className="controls2__bookmark__offset">
-            <Input
-              type="number"
-              value={bookmarkOffset}
-              onChange={(e) => setBookmarkOffset(e.target.value)}
-            />
-          </div>
-          <div className="controls2__bookmark__add">
-            {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
-            <Button onClick={addBookmark} icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid} />
-          </div>
-          <div className="controls2__bookmark__toggle">
-            <Button
-              onClick={playBookmark}
-              icon={faPlay}
-            />
-          </div>
-          <Label>Bookmark</Label>
-        </div>
-        <div className="controls2__source controls2__box">
-          <Button
-            icon={isSourcePlaying ? faPause : faPlay}
-            onClick={toggleSource}
-          />
 
-          <Label>Video</Label>
-        </div>
+    
         <div className="controls2__record controls2__box">
           <div className="controls2__record__sound">
             <Record
@@ -179,6 +153,37 @@ function Controls(props) {
           </div>
           <Label>Record</Label>
         </div>
+        <div className="controls2__source controls2__box">
+          <Button
+            icon={isSourcePlaying ? faPause : faPlay}
+            onClick={toggleSource}
+          />
+
+          <Label>Video</Label>
+        </div>
+
+        <div className="controls2__bookmark controls2__box">
+          <div className="controls2__bookmark__offset">
+            <Input
+              type="number"
+              value={bookmarkOffset}
+              onChange={(e) => setBookmarkOffset(e.target.value)}
+            />
+          </div>
+          <div className="controls2__bookmark__add">
+            {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
+            <Button onClick={addBookmark} icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid} />
+          </div>
+          <div className="controls2__bookmark__toggle">
+            <Button
+              onClick={playBookmark}
+              icon={faPlay}
+            />
+          </div>
+          <Label>Bookmark</Label>
+        </div>
+
+      
 
         <div className="controls2__rewind controls2__box">
           <div className="controls2__rewind__offset">
