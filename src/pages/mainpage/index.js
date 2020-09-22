@@ -88,8 +88,24 @@ function ControlledPlayer(props) {
 export const BookmarksContext = React.createContext({});
 
 function getBookmarks() {
-  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-  return savedBookmarks || [];
+  const urlParameters = new URL(document.location.href).searchParams;
+  const bookmarksString = urlParameters.get("bookmarks");
+  console.log({ bookmarksString });
+  let urlBookmarks = []
+  if (bookmarksString)
+ bookmarksString.split(";").forEach((bookmarkData, index) => {
+      const data = bookmarkData.split('+')
+      const time =  Number(data[0]); 
+  console.log(data[0], time)
+      if(time || time > 0)urlBookmarks.push({ id: index, time  })
+      // return { id: index, time: a[0] };
+    });
+console.log(urlBookmarks)
+  
+  const savedBookmarks = "";
+  // const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  // return savedBookmarks || [];
+  return urlBookmarks;
 }
 
 function MainPage() {
@@ -98,7 +114,7 @@ function MainPage() {
   const layout = forceColumn ? "column" : layoutButton;
 
   const [activeBookmark, setActiveBookmark] = React.useState(-1);
-  const [bookmarks, setBookmarks] = React.useState([]);
+  const [bookmarks, setBookmarks] = React.useState(() => getBookmarks());
 
   const provider = React.useMemo(() => {
     return { bookmarks, setBookmarks, activeBookmark, setActiveBookmark };
