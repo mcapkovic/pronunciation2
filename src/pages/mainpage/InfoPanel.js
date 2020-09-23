@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
 import BookmarksLoad from './BookmarksLoad';
 import ShareLesson from './ShareLesson';
+import { URL_VIDEO } from "../../constants";
 
 function Title(props) {
   const { modifier } = props;
@@ -17,7 +18,7 @@ function Title(props) {
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
-  return urlParameters.get("url");
+  return urlParameters.get(URL_VIDEO);
 }
 
 function VideoSource(props) {

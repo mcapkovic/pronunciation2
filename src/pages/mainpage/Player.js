@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { BookmarksContext } from "./index";
+import { BookmarksContext } from "../../context/bookmarksContext";
 import createUUID from "../../utils/createUUID";
 import { ITEM_BOOKMARKS, URL_VIDEO } from "../../constants";
 
@@ -29,11 +29,7 @@ function Player(props) {
     },
     customDispatch: { toggleSource },
   } = props;
-
   const player = React.useRef();
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
-
-  const playerState = React.useRef();
 
   // play bookmark
   useEffect(() => {

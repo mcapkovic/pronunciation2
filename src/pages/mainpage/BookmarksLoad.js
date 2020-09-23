@@ -1,5 +1,5 @@
 import React from "react";
-import { BookmarksContext } from "./index";
+import { BookmarksContext } from "../../context/bookmarksContext";
 import './BookmarksLoad.scss'
 
 function getBookmarks() {

@@ -17,7 +17,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
-import { BookmarksContext } from "./index";
+import { BookmarksContext } from "../../context/bookmarksContext";
 import Record from "./Recorder";
 import useKeyDown from '../../hooks/useKeyDown'
 

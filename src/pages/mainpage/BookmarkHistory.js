@@ -1,6 +1,6 @@
 import React from "react";
 import "./BookmarkHistory.scss";
-import { BookmarksContext } from "./index";
+import { BookmarksContext } from "../../context/bookmarksContext";
 import { toMinutes } from "../../utils/convertTime";
 import { ITEM_BOOKMARKS } from "../../constants";
 

@@ -1,34 +1,20 @@
 import React from "react";
 import "./ShareLesson.scss";
-import { BookmarksContext } from "./index";
-import { URL_BOOKMARKS, URL_VIDEO } from "../../constants";
+import { BookmarksContext } from "../../context/bookmarksContext";
+import { URL_VIDEO } from "../../constants";
+import { getBookmarksUrlSearch } from "../../utils/bookmarksUtils";
 
 function ShareLesson(props) {
-  const {
-    bookmarks,
-    setBookmarks,
-    activeBookmark,
-    setActiveBookmark,
-  } = React.useContext(BookmarksContext);
-
-  const { value, theme } = props;
+  const { bookmarks } = React.useContext(BookmarksContext);
   const boxRef = React.useRef();
   const [toastrToggle, setToastrToggle] = React.useState(null);
 
   const onShareClick = () => {
-    let bookmarksString = "";
-    let csvContent = "";
-    console.log(bookmarks);
-    if (bookmarks.length > 0) {
-      bookmarks.forEach((bookmark) => {
-        bookmarksString = `${bookmarksString}${bookmark.time};`;
-      });
-    }
-
+    const bookmarksUrlSearch = getBookmarksUrlSearch(bookmarks);
     const urlParameters = new URL(document.location.href).searchParams;
     const videoUrl = urlParameters.get(URL_VIDEO);
 
-    boxRef.current.value = `${document.location.origin}?${URL_VIDEO}=${videoUrl}&${URL_BOOKMARKS}=${bookmarksString}`;
+    boxRef.current.value = `${document.location.origin}?${URL_VIDEO}=${videoUrl}&${bookmarksUrlSearch}`;
     boxRef.current.select();
     document.execCommand("copy");
     setToastrToggle(!toastrToggle);
