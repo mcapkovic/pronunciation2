@@ -1,0 +1,9 @@
+$border: 1px solid var(--main-gray);
+
+.share-lesson-button{
+    margin-left: 0.5rem;
+    background-color: transparent;
+    border: $border;
+    color: var(--primary-text);
+    padding: 0.2rem 0.4rem;
+}

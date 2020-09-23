@@ -4,6 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
 import BookmarksLoad from './BookmarksLoad';
+import ShareLesson from './ShareLesson';
 
 function Title(props) {
   const { modifier } = props;
@@ -61,6 +62,7 @@ function InfoPanel(props) {
       <div className="info-panel__section">
         <Title>Utils</Title>
         < BookmarksLoad />
+        <ShareLesson/>
       </div>
 
       <div className="info-panel__section">
