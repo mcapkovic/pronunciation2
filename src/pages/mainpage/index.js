@@ -6,6 +6,7 @@ import BookmarkHistory from "./BookmarkHistory";
 import InfoPanel from "./InfoPanel";
 import { useCustomReducer } from "../../hooks/useCustomReducer";
 import Player from "./Player";
+import { URL_BOOKMARKS } from "../../constants";
 
 const initialBookmarks = [
   { id: 1, time: 438.5 },
@@ -89,19 +90,19 @@ export const BookmarksContext = React.createContext({});
 
 function getBookmarks() {
   const urlParameters = new URL(document.location.href).searchParams;
-  const bookmarksString = urlParameters.get("bookmarks");
+  const bookmarksString = urlParameters.get(URL_BOOKMARKS);
   console.log({ bookmarksString });
-  let urlBookmarks = []
+  let urlBookmarks = [];
   if (bookmarksString)
- bookmarksString.split(";").forEach((bookmarkData, index) => {
-      const data = bookmarkData.split('+')
-      const time =  Number(data[0]); 
-  console.log(data[0], time)
-      if(time || time > 0)urlBookmarks.push({ id: index, time  })
+    bookmarksString.split(";").forEach((bookmarkData, index) => {
+      const data = bookmarkData.split("+");
+      const time = Number(data[0]);
+      console.log(data[0], time);
+      if (time || time > 0) urlBookmarks.push({ id: index, time });
       // return { id: index, time: a[0] };
     });
-console.log(urlBookmarks)
-  
+  console.log(urlBookmarks);
+
   const savedBookmarks = "";
   // const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   // return savedBookmarks || [];

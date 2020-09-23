@@ -1,6 +1,7 @@
 import React from "react";
 import "./ShareLesson.scss";
 import { BookmarksContext } from "./index";
+import { URL_BOOKMARKS, URL_VIDEO } from "../../constants";
 
 function ShareLesson(props) {
   const {
@@ -35,17 +36,16 @@ function ShareLesson(props) {
 
     if (bookmarksString) {
       const urlParameters = new URL(document.location.href).searchParams;
-      const videoUrl = urlParameters.get("url");
+      const videoUrl = urlParameters.get(URL_VIDEO);
 
-      document.location.search = 'url=' + videoUrl + "&bookmarks=" + bookmarksString;
+      document.location.search = `${URL_VIDEO}=${videoUrl}&${URL_BOOKMARKS}=${bookmarksString}`;
     }
   };
 
   const test = () => {
     const urlParameters = new URL(document.location.href).searchParams;
-      const aaa  = urlParameters.get("bookmarks");
+    const aaa = urlParameters.get(URL_BOOKMARKS);
     console.log(aaa);
-
   };
 
   return (
