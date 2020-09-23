@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { BookmarksContext } from "./index";
 import createUUID from "../../utils/createUUID";
-import { ITEM_BOOKMARKS } from "../../constants";
+import { ITEM_BOOKMARKS, URL_VIDEO } from "../../constants";
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
-  return urlParameters.get("url");
+  return urlParameters.get(URL_VIDEO);
 }
 
 function Player(props) {

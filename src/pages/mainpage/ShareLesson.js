@@ -11,6 +11,10 @@ function ShareLesson(props) {
     setActiveBookmark,
   } = React.useContext(BookmarksContext);
 
+  const { value, theme } = props;
+  const boxRef = React.useRef();
+  const [toastrToggle, setToastrToggle] = React.useState(null);
+
   const onShareClick = () => {
     let bookmarksString = "";
     let csvContent = "";
@@ -19,41 +23,36 @@ function ShareLesson(props) {
       bookmarks.forEach((bookmark) => {
         bookmarksString = `${bookmarksString}${bookmark.time};`;
       });
-
-      //   const bookmarksToSave= bookmarks.map(bookmark => [`"${bookmark.time}"`])
-
-      //   console.log({bookmarksToSave})
-      //   csvContent =
-      //     "data:text/csv;charset=utf-8," +
-      //     bookmarksToSave.map((e) => e.join(",")).join("\n");
-
-      // bookmarksString= 'aaa'
     }
-    console.log({ bookmarksString });
 
-    //     var encodedUri = encodeURI(csvContent);
-    // window.open(encodedUri);
-
-    if (bookmarksString) {
-      const urlParameters = new URL(document.location.href).searchParams;
-      const videoUrl = urlParameters.get(URL_VIDEO);
-
-      document.location.search = `${URL_VIDEO}=${videoUrl}&${URL_BOOKMARKS}=${bookmarksString}`;
-    }
-  };
-
-  const test = () => {
     const urlParameters = new URL(document.location.href).searchParams;
-    const aaa = urlParameters.get(URL_BOOKMARKS);
-    console.log(aaa);
+    const videoUrl = urlParameters.get(URL_VIDEO);
+
+    boxRef.current.value = `${document.location.origin}?${URL_VIDEO}=${videoUrl}&${URL_BOOKMARKS}=${bookmarksString}`;
+    boxRef.current.select();
+    document.execCommand("copy");
+    setToastrToggle(!toastrToggle);
   };
 
   return (
-    <div>
-      <button className="share-lesson-button" onClick={onShareClick}>
+    <div className="share-lesson">
+      <button className="share-lesson__button" onClick={onShareClick}>
         Share lesson (alpha feature)
       </button>
-      <button onClick={test}>test</button>
+
+      <textarea className="share-lesson__text-area" ref={boxRef} />
+
+      {toastrToggle !== null && (
+        <div
+          className={`share-lesson__toastr ${
+            toastrToggle
+              ? "share-lesson__toastr--one"
+              : "share-lesson__toastr--two"
+          }`}
+        >
+          Copied to the clipboard!
+        </div>
+      )}
     </div>
   );
 }

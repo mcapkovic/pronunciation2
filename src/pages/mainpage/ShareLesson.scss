@@ -1,9 +1,62 @@
 $border: 1px solid var(--main-gray);
 
-.share-lesson-button{
+@keyframes one {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes two {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.share-lesson {
+  display: inline-block;
+  &__button {
     margin-left: 0.5rem;
     background-color: transparent;
     border: $border;
     color: var(--primary-text);
     padding: 0.2rem 0.4rem;
+  }
+
+  &__text-area {
+    position: fixed;
+    top: -1000px;
+    left: 0;
+  }
+
+  &__toastr {
+    position: fixed;
+    display: inline-block;
+    top: 0.5em;
+    right: 0.5em;
+    background: #8a8a8ac2;
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.4em;
+    opacity: 0;
+    &--one {
+      animation: one 4s;
+      animation-fill-mode: forwards;
+    }
+    &--two {
+      animation: two 4s;
+      animation-fill-mode: forwards;
+    }
+  }
 }
