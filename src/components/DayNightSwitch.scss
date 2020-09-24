@@ -1,6 +1,6 @@
 .day-night-switch{
     display: flex;
-
+    max-width: 25rem;
     &__range{
         flex-grow: 1;
     }
