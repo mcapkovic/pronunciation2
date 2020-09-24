@@ -1,6 +1,6 @@
 import React from "react";
 import "./InfoPanel.scss";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
 import BookmarksLoad from './BookmarksLoad';
@@ -26,8 +26,8 @@ function VideoSource(props) {
 
   const addUrl = React.useCallback(() => {
     document.location.search = value
-      ? "url=" + value
-      : "url=https://youtu.be/ZTgYjGXFAkw";
+      ? URL_VIDEO + "=" + value
+      : URL_VIDEO + "=https://youtu.be/ZTgYjGXFAkw";
   }, [value]);
 
   const editValue = React.useCallback(
@@ -45,7 +45,7 @@ function VideoSource(props) {
         placeholder="https://youtu.be/ZTgYjGXFAkw"
       />
       <button className="video-source__button" onClick={addUrl}>
-        <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={faArrowRight} />
       </button>
     </div>
   );
