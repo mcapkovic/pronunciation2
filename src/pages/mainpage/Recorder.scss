@@ -6,5 +6,9 @@
         height: 100%;
         position: absolute;
         left: -50px;
+        visibility: hidden;
+        &--active{
+            visibility: visible;
+        }
     }
 }
