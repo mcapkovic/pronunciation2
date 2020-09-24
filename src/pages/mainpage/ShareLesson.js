@@ -23,7 +23,7 @@ function ShareLesson(props) {
   return (
     <div className="share-lesson">
       <button className="share-lesson__button" onClick={onShareClick}>
-        Share lesson (alpha feature)
+        Share the lesson (alpha feature)
       </button>
 
       <textarea className="share-lesson__text-area" ref={boxRef} />

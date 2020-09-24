@@ -66,6 +66,8 @@ const actionDetails = {
   bookmarkPlay: { text: "play a bookmark", shortcut: "f" },
   rewindBack: { text: "rewind backward", shortcut: "arrow left" },
   rewindForward: { text: "rewind forward", shortcut: "arrow right" },
+  bookmarkOffset: { text: "bookmark = current time + input value", shortcut: "" },
+  rewindOffset: { text: "rewind seconds", shortcut: "" },
 };
 
 function Controls(props) {
