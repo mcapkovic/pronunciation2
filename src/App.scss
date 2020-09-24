@@ -1,4 +1,4 @@
-@import './styles/variables';
+@import "./styles/variables";
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -8,12 +8,58 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.page-wrapper{
+.page-wrapper {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   transition: $backgroundTransition;
+}
+
+/**
+ * Tooltip Styles
+ */
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0.1s;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: var(--main-icon);
+  // background-color: hsla(0, 0%, 20%, 0.9);
+  color: var(--main-bg-color);
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before {
+  visibility: visible;
+  opacity: 0.9;
 }

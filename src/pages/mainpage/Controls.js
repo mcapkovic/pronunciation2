@@ -14,19 +14,25 @@ import {
   faPlus,
   faBookmark as faBookmarkSolid,
   faUndoAlt,
+  faQuestionCircle,
+  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
 import { BookmarksContext } from "../../context/bookmarksContext";
 import Record from "./Recorder";
-import useKeyDown from '../../hooks/useKeyDown'
+import useKeyDown from "../../hooks/useKeyDown";
+import TooltipDescription from "../../components/TooltipDescription";
+import { getTooltipText } from "../../utils/generalUtils";
 
 function Button(props) {
-  const { icon, ...buttonProps } = props;
+  const { icon, tooltip, ...buttonProps } = props;
   return (
-    <button {...buttonProps} className="controls-button">
-      {icon ? <FontAwesomeIcon icon={icon} /> : props.children}
-    </button>
+    <TooltipDescription className="controls-button" tooltip={tooltip}>
+      <button {...buttonProps}>
+        {icon ? <FontAwesomeIcon icon={icon} /> : props.children}
+      </button>
+    </TooltipDescription>
   );
 }
 
@@ -51,6 +57,16 @@ function checkFocus() {
     element.focus();
   }
 }
+
+const actionDetails = {
+  recordPlay: { text: "play/stop recorded data", shortcut: "s" },
+  recordingToggle: { text: "start/stop recording", shortcut: "a" },
+  videoToggle: { text: "play/pause source video", shortcut: "d" },
+  addBookmark: { text: "add a bookmark", shortcut: "r" },
+  bookmarkPlay: { text: "play a bookmark", shortcut: "f" },
+  rewindBack: { text: "rewind backward", shortcut: "arrow left" },
+  rewindForward: { text: "rewind forward", shortcut: "arrow right" },
+};
 
 function Controls(props) {
   const {
@@ -90,35 +106,41 @@ function Controls(props) {
     setIsRecordPlaying(!isRecordPlaying);
   };
 
-  useKeyDown('ArrowRight', () => {
-    goForward()
-  })
+  useKeyDown("ArrowRight", () => {
+    goForward();
+  });
 
-  useKeyDown('ArrowLeft', () => {
-    goBackward()
-  })
+  useKeyDown("ArrowLeft", () => {
+    goBackward();
+  });
 
-  useKeyDown('d', () => {
-    toggleSource()
-  })
+  useKeyDown("d", () => {
+    toggleSource();
+  });
 
-  useKeyDown('r', () => {
-    addBookmark()
-  })
+  useKeyDown("r", () => {
+    addBookmark();
+  });
 
-  useKeyDown('f', () => {
-    playBookmark()
-  })
+  useKeyDown("f", () => {
+    playBookmark();
+  });
 
-  useKeyDown('a', () => {
-    toggleRecording()
-  }, [isRecording, isSourcePlaying])
+  useKeyDown(
+    "a",
+    () => {
+      toggleRecording();
+    },
+    [isRecording, isSourcePlaying]
+  );
 
-  useKeyDown('s', () => {
-    toggleRecordPlay()
-  },[isRecordPlaying, isSourcePlaying])
-
-
+  useKeyDown(
+    "s",
+    () => {
+      toggleRecordPlay();
+    },
+    [isRecordPlaying, isSourcePlaying]
+  );
 
   React.useEffect(() => {
     const id = window.setInterval(checkFocus, 1000);
@@ -130,7 +152,6 @@ function Controls(props) {
       <div className="controls2" tabIndex={0}>
         <div className="controls2__spacer" />
 
-    
         <div className="controls2__record controls2__box">
           <div className="controls2__record__sound">
             <Record
@@ -143,12 +164,14 @@ function Controls(props) {
             <Button
               onClick={toggleRecording}
               icon={isRecording ? faStop : faMicrophone}
+              tooltip={getTooltipText(actionDetails.recordingToggle)}
             />
           </div>
           <div className="controls2__record__play">
             <Button
               onClick={toggleRecordPlay}
               icon={isRecordPlaying ? faStop : faPlay}
+              tooltip={getTooltipText(actionDetails.recordPlay)}
             />
           </div>
           <Label>Record</Label>
@@ -157,8 +180,8 @@ function Controls(props) {
           <Button
             icon={isSourcePlaying ? faPause : faPlay}
             onClick={toggleSource}
+            tooltip={getTooltipText(actionDetails.videoToggle)}
           />
-
           <Label>Video</Label>
         </div>
 
@@ -171,19 +194,21 @@ function Controls(props) {
             />
           </div>
           <div className="controls2__bookmark__add">
-            {/* <Button onClick={addBookmark} icon={faBookmark} /> */}
-            <Button onClick={addBookmark} icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid} />
+            <Button
+              onClick={addBookmark}
+              icon={activeBookmark === -1 ? faBookmark : faBookmarkSolid}
+              tooltip={getTooltipText(actionDetails.addBookmark)}
+            />
           </div>
           <div className="controls2__bookmark__toggle">
             <Button
               onClick={playBookmark}
               icon={faPlay}
+              tooltip={getTooltipText(actionDetails.bookmarkPlay)}
             />
           </div>
           <Label>Bookmark</Label>
         </div>
-
-      
 
         <div className="controls2__rewind controls2__box">
           <div className="controls2__rewind__offset">
@@ -194,10 +219,18 @@ function Controls(props) {
             />
           </div>
           <div className="controls2__rewind__backward">
-            <Button icon={faBackward} onClick={goBackward} />
+            <Button
+              icon={faBackward}
+              onClick={goBackward}
+              tooltip={getTooltipText(actionDetails.rewindBack)}
+            />
           </div>
           <div className="controls2__rewind__forward">
-            <Button icon={faForward} onClick={goForward} />
+            <Button
+              icon={faForward}
+              onClick={goForward}
+              tooltip={getTooltipText(actionDetails.rewindForward)}
+            />
           </div>
           <Label>Rewind</Label>
         </div>

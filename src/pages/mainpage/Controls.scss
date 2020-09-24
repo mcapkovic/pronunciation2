@@ -50,7 +50,6 @@ $box-size-small: 4.5rem;
       width: 50%;
       height: 50%;
       //   background-color: purple;
-
     }
     &__offset {
       width: 100%;
@@ -151,18 +150,23 @@ $box-size-small: 4.5rem;
 }
 
 .controls-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  border: none;
-  font-size: 1.5rem;
-  background-color: transparent;
-  &:hover {
-    background-color: var(--black-alpha-10);
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+    &:hover {
+      background-color: var(--black-alpha-10);
+    }
   }
 
   svg {

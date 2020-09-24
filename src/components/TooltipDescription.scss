@@ -1,0 +1,16 @@
+.tooltip-description{
+    position: relative;
+    &__tooltip {
+    top: 2px;
+    right: 2px;
+    position: absolute;
+    font-size: 0.5rem;
+    display: none;
+  }
+
+   &:hover {
+    .tooltip-description__tooltip {
+      display: block;
+    }
+  }
+}
