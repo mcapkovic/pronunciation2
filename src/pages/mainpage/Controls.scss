@@ -191,6 +191,9 @@ $box-size-small: 4.5rem;
     background-color: var(--main-bg-color);
     transition: $backgroundTransition;
   }
+  svg {
+    color: var(--main-icon);
+  }
 }
 
 .controls-label {
