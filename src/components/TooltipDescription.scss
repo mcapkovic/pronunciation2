@@ -1,0 +1,17 @@
+.tooltip-description {
+  position: relative;
+  &__tooltip {
+    line-height: 1;
+    top: 1px;
+    right: 1px;
+    position: absolute;
+    font-size: 0.5rem;
+    display: none;
+  }
+
+  &:hover {
+    .tooltip-description__tooltip {
+      display: block;
+    }
+  }
+}

@@ -6,61 +6,15 @@ import BookmarkHistory from "./BookmarkHistory";
 import InfoPanel from "./InfoPanel";
 import { useCustomReducer } from "../../hooks/useCustomReducer";
 import Player from "./Player";
-
-const initialBookmarks = [
-  { id: 1, time: 438.5 },
-  { id: 2, time: 443 },
-];
-
-const actions = {
-  toggleSource: (state, action) => {
-    return {
-      ...state,
-      isSourcePlaying: !state.isSourcePlaying,
-    };
-  },
-  setRewindValue: (state, action) => {
-    return {
-      ...state,
-      rewindValue: action.payload,
-    };
-  },
-  goForward: (state, action) => {
-    return {
-      ...state,
-      forwardTrigger: state.forwardTrigger + 1,
-    };
-  },
-  goBackward: (state, action) => {
-    return {
-      ...state,
-      backwardTrigger: state.backwardTrigger + 1,
-    };
-  },
-  addBookmark: (state, action) => {
-    return {
-      ...state,
-      addBookmarkTrigger: state.addBookmarkTrigger + 1,
-    };
-  },
-  setBookmarkOffset: (state, action) => {
-    return {
-      ...state,
-      bookmarkOffset: action.payload,
-    };
-  },
-  playBookmark: (state, action) => {
-    return {
-      ...state,
-      playBookmarkTrigger: state.playBookmarkTrigger + 1,
-      isSourcePlaying: true,
-    };
-  },
-};
+import { getBookmarksFromUrl } from "../../utils/bookmarksUtils";
+import {
+  BookmarksContext,
+  bookmarksActions,
+} from "../../context/bookmarksContext";
 
 function ControlledPlayer(props) {
   const { layout, setLayoutButton, className } = props;
-  const [state, customDispatch] = useCustomReducer(actions, {
+  const [state, customDispatch] = useCustomReducer(bookmarksActions, {
     isSourcePlaying: false,
     rewindValue: 1,
     forwardTrigger: 0,
@@ -85,20 +39,13 @@ function ControlledPlayer(props) {
   );
 }
 
-export const BookmarksContext = React.createContext({});
-
-function getBookmarks() {
-  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-  return savedBookmarks || [];
-}
-
 function MainPage() {
   const [layoutButton, setLayoutButton] = React.useState("row");
   const forceColumn = useMediaQuery("(max-width: 750px)");
   const layout = forceColumn ? "column" : layoutButton;
 
   const [activeBookmark, setActiveBookmark] = React.useState(-1);
-  const [bookmarks, setBookmarks] = React.useState([]);
+  const [bookmarks, setBookmarks] = React.useState(() => getBookmarksFromUrl());
 
   const provider = React.useMemo(() => {
     return { bookmarks, setBookmarks, activeBookmark, setActiveBookmark };

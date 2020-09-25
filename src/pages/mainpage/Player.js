@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { BookmarksContext } from "./index";
+import { BookmarksContext } from "../../context/bookmarksContext";
 import createUUID from "../../utils/createUUID";
-import { ITEM_BOOKMARKS } from "../../constants";
+import { ITEM_BOOKMARKS, URL_VIDEO } from "../../constants";
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
-  return urlParameters.get("url");
+  return urlParameters.get(URL_VIDEO);
 }
 
 function Player(props) {
@@ -29,11 +29,7 @@ function Player(props) {
     },
     customDispatch: { toggleSource },
   } = props;
-
   const player = React.useRef();
-  const [ignored, forceUpdate] = React.useReducer((x) => x + 1, 0);
-
-  const playerState = React.useRef();
 
   // play bookmark
   useEffect(() => {

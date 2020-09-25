@@ -1,9 +1,11 @@
 import React from "react";
 import "./InfoPanel.scss";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
 import BookmarksLoad from './BookmarksLoad';
+import ShareLesson from './ShareLesson';
+import { URL_VIDEO } from "../../constants";
 
 function Title(props) {
   const { modifier } = props;
@@ -16,7 +18,7 @@ function Title(props) {
 
 function getVideoSource() {
   const urlParameters = new URL(document.location.href).searchParams;
-  return urlParameters.get("url");
+  return urlParameters.get(URL_VIDEO);
 }
 
 function VideoSource(props) {
@@ -24,8 +26,8 @@ function VideoSource(props) {
 
   const addUrl = React.useCallback(() => {
     document.location.search = value
-      ? "url=" + value
-      : "url=https://youtu.be/ZTgYjGXFAkw";
+      ? URL_VIDEO + "=" + value
+      : URL_VIDEO + "=https://youtu.be/ZTgYjGXFAkw";
   }, [value]);
 
   const editValue = React.useCallback(
@@ -43,7 +45,7 @@ function VideoSource(props) {
         placeholder="https://youtu.be/ZTgYjGXFAkw"
       />
       <button className="video-source__button" onClick={addUrl}>
-        <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={faArrowRight} />
       </button>
     </div>
   );
@@ -61,6 +63,7 @@ function InfoPanel(props) {
       <div className="info-panel__section">
         <Title>Utils</Title>
         < BookmarksLoad />
+        <ShareLesson/>
       </div>
 
       <div className="info-panel__section">

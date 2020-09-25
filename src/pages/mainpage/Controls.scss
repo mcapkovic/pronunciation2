@@ -43,25 +43,18 @@ $box-size-small: 4.5rem;
       width: 50%;
       height: 50%;
       //   background-color: red;
-      border: $border;
-      border-bottom-width: 0;
-      border-left-width: 0;
-      border-top-width: 0;
+      border-right: $border;
     }
     &__toggle {
       // display: inline-flex;
       width: 50%;
       height: 50%;
       //   background-color: purple;
-
     }
     &__offset {
       width: 100%;
       height: 50%;
-      border: $border;
-      border-top-width: 0;
-      border-left-width: 0;
-      border-right-width: 0;
+      border-bottom: $border;
     }
     // &__label {
     //   width: 100%;
@@ -76,10 +69,7 @@ $box-size-small: 4.5rem;
     &__sound {
       width: 100%;
       height: 50%;
-      border: $border;
-      border-top-width: 0;
-      border-left-width: 0;
-      border-right-width: 0;
+      border-bottom: $border;
     }
     &__mic {
       // flex-grow: 1;
@@ -100,10 +90,7 @@ $box-size-small: 4.5rem;
     &__backward {
       width: 50%;
       height: 50%;
-      border: $border;
-      border-bottom-width: 0;
-      border-left-width: 0;
-      border-top-width: 0;
+      border-right: $border;
     }
     &__forward {
       width: 50%;
@@ -112,10 +99,7 @@ $box-size-small: 4.5rem;
     &__offset {
       width: 100%;
       height: 50%;
-      border: $border;
-      border-top-width: 0;
-      border-left-width: 0;
-      border-right-width: 0;
+      border-bottom: $border;
     }
   }
 
@@ -125,10 +109,7 @@ $box-size-small: 4.5rem;
       display: none;
       width: 100%;
       height: 0%;
-      border: $border;
-      border-top-width: 0;
-      border-left-width: 0;
-      border-right-width: 0;
+      border-bottom: $border;
     }
     &__key {
       width: 100%;
@@ -169,18 +150,23 @@ $box-size-small: 4.5rem;
 }
 
 .controls-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  border: none;
-  font-size: 1.5rem;
-  background-color: transparent;
-  &:hover {
-    background-color: var(--black-alpha-10);
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+    &:hover {
+      background-color: var(--black-alpha-10);
+    }
   }
 
   svg {
@@ -189,18 +175,25 @@ $box-size-small: 4.5rem;
 }
 
 .controls-input {
-  display: flex;
-  font-size: 1.5rem;
-
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  border: none;
-  color: var(--primary-text);
-  text-align: center;
-  background-color: var(--main-bg-color);
-  transition: $backgroundTransition;
+  &__input {
+    display: flex;
+    font-size: 1.5rem;
+
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: var(--primary-text);
+    text-align: center;
+    background-color: var(--main-bg-color);
+    transition: $backgroundTransition;
+  }
+  svg {
+    color: var(--main-icon);
+  }
 }
 
 .controls-label {

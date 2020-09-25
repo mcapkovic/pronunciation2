@@ -18,13 +18,14 @@ function Recorder(props) {
   return (
     <div className="recorder">
       <ReactMic
-        className="recorder__mic"
-        style={{ height: "10px" }}
+        className={`recorder__mic ${
+          isRecording ? "recorder__mic--active" : "recorder__mic--inactive"
+        }`}
         record={isRecording}
         onStop={onStop}
         strokeColor="gray"
         // visualSetting="frequencyBars"
-        backgroundColor='#00000000'
+        backgroundColor="#00000000"
       />
 
       <ReactAudioPlayer
