@@ -36,8 +36,18 @@ function Button(props) {
   );
 }
 
+// function Input(props) {
+//   return <input {...props} className="controls-input" />;
+// }
+
 function Input(props) {
-  return <input {...props} className="controls-input" />;
+  const { tooltip, ...inputProps } = props;
+
+  return (
+    <TooltipDescription tooltip={tooltip} className="controls-input" >
+      <input {...inputProps} className="controls-input__input" />
+    </TooltipDescription>
+  );
 }
 
 function Label(props) {
@@ -66,8 +76,11 @@ const actionDetails = {
   bookmarkPlay: { text: "play a bookmark", shortcut: "f" },
   rewindBack: { text: "rewind backward", shortcut: "arrow left" },
   rewindForward: { text: "rewind forward", shortcut: "arrow right" },
-  bookmarkOffset: { text: "bookmark = current time + input value", shortcut: "" },
-  rewindOffset: { text: "rewind seconds", shortcut: "" },
+  bookmarkOffset: {
+    text: "bookmark time offset in seconds",
+    shortcut: "",
+  },
+  rewindOffset: { text: "rewind value in seconds", shortcut: "" },
 };
 
 function Controls(props) {
@@ -193,6 +206,7 @@ function Controls(props) {
               type="number"
               value={bookmarkOffset}
               onChange={(e) => setBookmarkOffset(e.target.value)}
+              tooltip={actionDetails.bookmarkOffset.text}
             />
           </div>
           <div className="controls2__bookmark__add">
@@ -218,6 +232,7 @@ function Controls(props) {
               type="number"
               value={rewindValue}
               onChange={(e) => setRewindValue(e.target.value)}
+              tooltip={actionDetails.rewindOffset.text}
             />
           </div>
           <div className="controls2__rewind__backward">
