@@ -44,7 +44,7 @@ function Input(props) {
   const { tooltip, ...inputProps } = props;
 
   return (
-    <TooltipDescription tooltip={tooltip} className="controls-input" >
+    <TooltipDescription tooltip={tooltip} className="controls-input">
       <input {...inputProps} className="controls-input__input" />
     </TooltipDescription>
   );
@@ -61,10 +61,14 @@ function LastPressedKey(props) {
 }
 
 function checkFocus() {
+  // const element = document.querySelector(".controls2");
+  const element = checkFocus.elementRef;
   // if (document.activeElement === document.getElementsByTagName("iframe")[0]) {
   if (document.activeElement.id === "widget2") {
-    const element = document.querySelector(".controls2");
-    element.focus();
+    element.classList.add("controls2--disabled");
+    // element.focus();
+  } else if(element.classList.length > 1) {
+    element.classList.remove("controls2--disabled");
   }
 }
 
@@ -157,14 +161,17 @@ function Controls(props) {
     [isRecordPlaying, isSourcePlaying]
   );
 
+  const controlsRef = React.useRef();
+
   React.useEffect(() => {
-    const id = window.setInterval(checkFocus, 1000);
+    checkFocus.elementRef = controlsRef.current;
+    const id = window.setInterval(checkFocus, 500);
     return () => window.clearInterval(id);
-  }, []);
+  }, [controlsRef.current]);
 
   return (
     <div>
-      <div className="controls2" tabIndex={0}>
+      <div ref={controlsRef} className="controls2" tabIndex={0}>
         <div className="controls2__spacer" />
 
         <div className="controls2__record controls2__box">
