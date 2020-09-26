@@ -4,13 +4,7 @@ import { USER_FLAG } from "../constants";
 
 function useTracking(props) {
   React.useEffect(() => {
-    let newUser = true;
-
-    if (localStorage.getItem(USER_FLAG)) {
-      newUser = false;
-    } else {
-      localStorage.setItem(USER_FLAG, "Hi! :)");
-    }
+    let newUser =localStorage.getItem(USER_FLAG) ? false : true;
 
     const id = process.env.REACT_APP_ID;
     const key = process.env.REACT_APP_KEY;
@@ -20,9 +14,10 @@ function useTracking(props) {
     if (id && key && viewsTable)
       postData(`https://api.backendless.com/${id}/${key}/data/${viewsTable}`, {
         message: "Hi! :)",
-      }).then((data) => {
-        // console.log("data", data); // JSON data parsed by `data.json()` call
-      });
+      })
+    //   .then((data) => {
+    //     console.log("data", data); // JSON data parsed by `data.json()` call
+    //   });
 
     if (newUser && id && key && visitorsTable)
       postData(
@@ -30,7 +25,9 @@ function useTracking(props) {
         {
           message: "Hi! :)",
         }
-      );
+      ).then(() => {
+        localStorage.setItem(USER_FLAG, "Hi! :)");
+      });
   }, []);
 }
 
