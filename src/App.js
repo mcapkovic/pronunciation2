@@ -2,8 +2,9 @@ import React from "react";
 import "./App.scss";
 import "./styles/all.scss";
 import SearchPage from "./pages/homepage";
-import MainPage from './pages/mainpage';
+import MainPage from "./pages/mainpage";
 import { URL_VIDEO } from "./constants";
+import useTracking from "./hooks/useTracking";
 
 function App() {
   const urlParameters = React.useMemo(
@@ -13,6 +14,8 @@ function App() {
   const videoUrl = React.useMemo(() => urlParameters.get(URL_VIDEO), [
     urlParameters,
   ]);
+
+  useTracking();
 
   return (
     <div className="page-wrapper">

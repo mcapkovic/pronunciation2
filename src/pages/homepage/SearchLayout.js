@@ -3,15 +3,13 @@ import "./SearchLayout.scss";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
-import { URL_VIDEO } from "../../constants";
+import { URL_VIDEO, DEFAULT_LESSON, DEFAULT_VIDEO_URL } from "../../constants";
 
 function SearchLayout(props) {
   const [value, setValue] = React.useState("");
 
   const addUrl = React.useCallback(() => {
-    document.location.search = value
-      ? `${URL_VIDEO}=${value}`
-      : `${URL_VIDEO}=https://youtu.be/ZTgYjGXFAkw`;
+    document.location.search = value ? `${URL_VIDEO}=${value}` : DEFAULT_LESSON;
   }, [value]);
 
   const editValue = React.useCallback(
@@ -31,7 +29,7 @@ function SearchLayout(props) {
           className="search-page__search__input"
           value={value}
           onChange={editValue}
-          placeholder="https://youtu.be/ZTgYjGXFAkw"
+          placeholder={DEFAULT_VIDEO_URL}
         />
         <button className="search-page__search__button" onClick={addUrl}>
           <FontAwesomeIcon size="lg" icon={faArrowRight} />

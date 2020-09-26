@@ -1,9 +1,10 @@
 import React from "react";
 import { BookmarksContext } from "../../context/bookmarksContext";
 import "./BookmarksLoad.scss";
+import { ITEM_BOOKMARKS } from "../../constants";
 
 function getBookmarks() {
-  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  const savedBookmarks = JSON.parse(localStorage.getItem(ITEM_BOOKMARKS));
   return savedBookmarks || [];
 }
 

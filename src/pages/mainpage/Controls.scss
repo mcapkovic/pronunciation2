@@ -11,6 +11,7 @@ $box-size-small: 4.5rem;
 }
 
 .controls2 {
+  position: relative;
   outline: none;
   display: flex;
   //   flex-wrap: wrap;
@@ -18,8 +19,22 @@ $box-size-small: 4.5rem;
   //   width: 90%;
   margin: auto;
   border: $border;
-  border-right-width: 0;
   margin-bottom: 3rem;
+  opacity: 1;
+  &--disabled {
+    & > div {
+      opacity: 0.05;
+    }
+    &::after {
+      content: "↑ Source video controls active.";
+      position: absolute;
+      top: 30%;
+      font-size: 1.5rem;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
   &__box {
     height: $box-size-small;
     width: $box-size-small;
@@ -31,7 +46,6 @@ $box-size-small: 4.5rem;
     flex-grow: 2;
     // background-color: gray;
     min-width: 0.4rem;
-    border-right: $border;
   }
 
   &__bookmark {
@@ -66,6 +80,7 @@ $box-size-small: 4.5rem;
   &__record {
     display: flex;
     flex-wrap: wrap;
+    border-left: $border;
     &__sound {
       width: 100%;
       height: 50%;
