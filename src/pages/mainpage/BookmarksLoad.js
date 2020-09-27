@@ -19,7 +19,7 @@ function BookmarksLoad(props) {
 
   return (
     <div>
-      <Button onClick={updateBookmarks}>Load the last bookmarks</Button>
+      <Button onClick={updateBookmarks}>Load last bookmarks</Button>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import ReactPlayer from "react-player";
 import { BookmarksContext } from "../../context/bookmarksContext";
 import createUUID from "../../utils/createUUID";
@@ -32,7 +32,7 @@ function Player(props) {
   const player = React.useRef();
 
   // play bookmark
-  useEffect(() => {
+  React.useEffect(() => {
     if (bookmarks.length === 0 || playBookmarkTrigger === 0) return;
 
     if (activeBookmark === -1) {
@@ -48,7 +48,7 @@ function Player(props) {
   }, [playBookmarkTrigger]);
 
   // add bookmark
-  useEffect(() => {
+  React.useEffect(() => {
     if (addBookmarkTrigger === 0) return;
     const current = player.current.getCurrentTime();
     const newTime =
@@ -64,25 +64,19 @@ function Player(props) {
   }, [addBookmarkTrigger]);
 
   // rewind forward
-  useEffect(() => {
+  React.useEffect(() => {
     if (forwardTrigger === 0) return;
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) + Number(rewindValue));
   }, [forwardTrigger]);
 
   // rewin backward
-  useEffect(() => {
+  React.useEffect(() => {
     if (backwardTrigger === 0) return;
 
     const current = player.current.getCurrentTime();
     player.current.seekTo(Number(current) - Number(rewindValue));
   }, [backwardTrigger]);
-
-  const handleProgress = (e) => {
-    console.log(e);
-
-    console.log("isSourcePlaying", isSourcePlaying);
-  };
 
   const handlePlay = (e) => {
     if (!isSourcePlaying) toggleSource();
@@ -100,7 +94,6 @@ function Player(props) {
       url={getVideoSource()}
       controls
       playing={isSourcePlaying}
-      //   onProgress={handleProgress}
       onPause={onPause}
       onPlay={handlePlay}
     />

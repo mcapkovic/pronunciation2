@@ -6,16 +6,11 @@ import {
   faPause,
   faStop,
   faMicrophone,
-  faTimes,
   faBackward,
   faForward,
   faExpandAlt,
   faCompressAlt,
-  faPlus,
   faBookmark as faBookmarkSolid,
-  faUndoAlt,
-  faQuestionCircle,
-  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
@@ -67,7 +62,7 @@ function checkFocus() {
   if (document.activeElement.id === "widget2") {
     element.classList.add("controls2--disabled");
     // element.focus();
-  } else if(element.classList.length > 1) {
+  } else if (element.classList.length > 1) {
     element.classList.remove("controls2--disabled");
   }
 }
@@ -103,12 +98,7 @@ function Controls(props) {
     },
   } = props;
 
-  const {
-    bookmarks,
-    setActiveBookmark,
-    activeBookmark,
-    setBookmarks,
-  } = React.useContext(BookmarksContext);
+  const { activeBookmark } = React.useContext(BookmarksContext);
 
   const [isRecording, setIsRecording] = React.useState(false);
   const [isRecordPlaying, setIsRecordPlaying] = React.useState(false);
