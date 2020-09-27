@@ -17,7 +17,11 @@ function BookmarksLoad(props) {
     setBookmarks(savedBookmarks);
   };
 
-  return <Button onClick={updateBookmarks}>Load the last bookmarks</Button>;
+  return (
+    <div>
+      <Button onClick={updateBookmarks}>Load the last bookmarks</Button>
+    </div>
+  );
 }
 
 export default BookmarksLoad;
