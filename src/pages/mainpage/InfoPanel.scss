@@ -3,6 +3,16 @@
 .info-panel {
   &__section {
     margin-bottom: 1rem;
+    &__utils-content{
+      display: flex;
+      & > *{
+        margin-right: 0.5rem;
+        margin-bottom: 0.1rem;
+      }
+      & :last-child{
+        margin-right: 0;
+      }
+    }
   }
 }
 

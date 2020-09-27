@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayNightSwitch from "../../components/DayNightSwitch";
 import BookmarksLoad from "./BookmarksLoad";
 import ShareLesson from "./ShareLesson";
+import ClearBookmarks from "./ClearBookmarks";
 import { URL_VIDEO, DEFAULT_LESSON, DEFAULT_VIDEO_URL } from "../../constants";
 
 function Title(props) {
@@ -60,8 +61,11 @@ function InfoPanel(props) {
 
       <div className="info-panel__section">
         <Title>Utils</Title>
-        <BookmarksLoad />
-        <ShareLesson />
+        <div className="info-panel__section__utils-content">
+          <ShareLesson />
+          <BookmarksLoad />
+          <ClearBookmarks />
+        </div>
       </div>
 
       <div className="info-panel__section">
