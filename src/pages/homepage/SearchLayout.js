@@ -22,7 +22,7 @@ function SearchLayout(props) {
   return (
     <div className="search-page">
       <h1 className="search-page__title">
-        Hello, paste an YouTube url to the input.
+        Hello, paste an YouTube url to the input
       </h1>
       <div className="search-page__search">
         <input
@@ -34,6 +34,12 @@ function SearchLayout(props) {
         <button className="search-page__search__button" onClick={addUrl}>
           <FontAwesomeIcon size="lg" icon={faArrowRight} />
         </button>
+        <div className="search-page__search__example">
+          or open an
+          <button onClick={() => (document.location.search = DEFAULT_LESSON)}>
+            example
+          </button>
+        </div>
       </div>
       <div style={{ display: "none" }}>
         <DayNightSwitch />

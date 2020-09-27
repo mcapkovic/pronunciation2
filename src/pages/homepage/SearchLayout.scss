@@ -32,6 +32,28 @@
       border: none;
       top: 50%;
       transform: translateY(-50%);
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &__example {
+      font-size: 10px;
+      color: var(--primary-text);
+      position: absolute;
+      bottom: -0.7rem;
+      left: 0.3rem;
+      opacity: 0.6;
+      button {
+        background: none;
+        color: var(--primary-text);
+        border: none;
+        font-size: 10px;
+        padding: 0;
+        padding-left: 0.3em;
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 }
