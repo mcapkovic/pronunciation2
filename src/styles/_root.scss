@@ -1,18 +1,20 @@
 :root {
   --main-gray: #808080;
   --black: rgb(0, 0, 0);
+  --blackInt: 0;
+  --blackRGB: var(--blackInt), var(--blackInt), var(--blackInt);
   --main-bg-color-lum: 100%;
   // --main-bg-color:  hsl(0, 0%, var(--main-bg-color-lum));
   --main-bg-color: hsl(210deg 4% var(--main-bg-color-lum));
-  --black-alpha-05: rgba(0, 0, 0, 0.05);
-  --black-alpha-10: rgba(0, 0, 0, 0.1);
-  --black-alpha-15: rgba(0, 0, 0, 0.15);
-  --black-alpha-20: rgba(0, 0, 0, 0.2);
-  --black-alpha-30: rgba(0, 0, 0, 0.3);
-  --black-alpha-40: rgba(0, 0, 0, 0.4);
-  --black-alpha-50: rgba(0, 0, 0, 0.5);
-  --black-alpha-60: rgba(0, 0, 0, 0.6);
-  --black-alpha-80: rgba(0, 0, 0, 0.8);
+  --black-alpha-05: rgba(var(--blackRGB), 0.05);
+  --black-alpha-10: rgba(var(--blackRGB), 0.1);
+  --black-alpha-15: rgba(var(--blackRGB), 0.15);
+  --black-alpha-20: rgba(var(--blackRGB), 0.2);
+  --black-alpha-30: rgba(var(--blackRGB), 0.3);
+  --black-alpha-40: rgba(var(--blackRGB), 0.4);
+  --black-alpha-50: rgba(var(--blackRGB), 0.5);
+  --black-alpha-60: rgba(var(--blackRGB), 0.6);
+  --black-alpha-80: rgba(var(--blackRGB), 0.8);
   // --primary-text: rgb(12, 12, 12);
   // --secondary-text:
   --main-icon-lum: 31%;

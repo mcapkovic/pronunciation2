@@ -30,6 +30,11 @@ const colorVariables = [
     min: 10,
     max: 100,
   },
+  {
+    name: "--blackInt",
+    min: 0,
+    max: 100,
+  },
 ];
 
 // function bezierCurve(
