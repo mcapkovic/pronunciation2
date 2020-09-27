@@ -2,6 +2,7 @@ import React from "react";
 import { BookmarksContext } from "../../context/bookmarksContext";
 import "./BookmarksLoad.scss";
 import { ITEM_BOOKMARKS } from "../../constants";
+import Button from "../../components/Button";
 
 function getBookmarks() {
   const savedBookmarks = JSON.parse(localStorage.getItem(ITEM_BOOKMARKS));
@@ -9,23 +10,14 @@ function getBookmarks() {
 }
 
 function BookmarksLoad(props) {
-  const {
-    bookmarks,
-    setBookmarks,
-    activeBookmark,
-    setActiveBookmark,
-  } = React.useContext(BookmarksContext);
+  const { setBookmarks } = React.useContext(BookmarksContext);
 
   const updateBookmarks = () => {
     const savedBookmarks = getBookmarks();
     setBookmarks(savedBookmarks);
   };
 
-  return (
-    <button className="bookmark-load-button" onClick={updateBookmarks}>
-      Load the last bookmarks
-    </button>
-  );
+  return <Button onClick={updateBookmarks}>Load the last bookmarks</Button>;
 }
 
 export default BookmarksLoad;

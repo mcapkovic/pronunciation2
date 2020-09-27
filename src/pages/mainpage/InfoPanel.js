@@ -69,7 +69,7 @@ function InfoPanel(props) {
       </div>
 
       <div className="info-panel__section">
-        <Title>Keyboard shortcuts</Title>
+        <Title>Custom keyboard shortcuts</Title>
         <div>r - add a bookmark</div>
         <div>f - play a bookmark</div>
         <div>d - play/pause video</div>

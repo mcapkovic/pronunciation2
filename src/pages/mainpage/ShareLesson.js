@@ -3,6 +3,7 @@ import "./ShareLesson.scss";
 import { BookmarksContext } from "../../context/bookmarksContext";
 import { URL_VIDEO } from "../../constants";
 import { getBookmarksUrlSearch } from "../../utils/bookmarksUtils";
+import Button from "../../components/Button";
 
 function ShareLesson(props) {
   const { bookmarks } = React.useContext(BookmarksContext);
@@ -22,12 +23,8 @@ function ShareLesson(props) {
 
   return (
     <div className="share-lesson">
-      <button className="share-lesson__button" onClick={onShareClick}>
-        Share the lesson (alpha feature)
-      </button>
-
-      <textarea className="share-lesson__text-area" ref={boxRef} />
-
+      <Button onClick={onShareClick}>Share the lesson</Button>
+      <textarea tabIndex='1' className="share-lesson__text-area" ref={boxRef} />
       {toastrToggle !== null && (
         <div
           className={`share-lesson__toastr ${

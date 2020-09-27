@@ -5,4 +5,8 @@ $border: 1px solid var(--main-gray);
     border: $border;
     color: var(--primary-text);
     padding: 0.2rem 0.4rem;
+
+    &:hover{
+        background-color: var( --black-alpha-05);
+    }
 }
