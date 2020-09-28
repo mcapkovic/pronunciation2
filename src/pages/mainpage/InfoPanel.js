@@ -24,6 +24,7 @@ function getVideoSource() {
 
 function VideoSource(props) {
   const [value, setValue] = React.useState(getVideoSource);
+  const inputRef = React.useRef();
 
   const addUrl = React.useCallback(() => {
     document.location.search = value ? URL_VIDEO + "=" + value : DEFAULT_LESSON;
@@ -38,10 +39,13 @@ function VideoSource(props) {
   return (
     <div className="video-source">
       <input
+        onKeyDown={(e) => e.stopPropagation()}
+        ref={inputRef}
         className="video-source__input"
         value={value}
         onChange={editValue}
         placeholder={DEFAULT_VIDEO_URL}
+        onFocus={() => inputRef.current.select()}
       />
       <button className="video-source__button" onClick={addUrl}>
         <FontAwesomeIcon icon={faArrowRight} />
