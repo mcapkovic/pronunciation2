@@ -2,6 +2,7 @@ import React from "react";
 import ReactAudioPlayer from "react-audio-player";
 import AudioRecorder from "audio-recorder-polyfill";
 import RecordingCount from "./RecordingCount";
+import "./Recorder2.scss";
 
 if (!window.MediaRecorder) window.MediaRecorder = AudioRecorder;
 
@@ -54,11 +55,11 @@ function Recorder2(props) {
     mediaRecorder && mediaRecorder.state === "recording" ? true : false;
 
   return (
-    <div style={{ backgroundColor: "red"}}>
+    <div className="recorder2">
       <ReactAudioPlayer
         src={isRecordPlaying && audio ? audio : ""}
         autoPlay
-        onEnded={() =>  setIsRecordPlaying(false)}
+        onEnded={() => setIsRecordPlaying(false)}
       />
 
       {/* <br />
@@ -68,14 +69,7 @@ function Recorder2(props) {
       <button disabled={!isRecordingX} onClick={stop}>
         c
       </button> */}
-      <div>
-        {isRecordingX && (
-          <div>
-            status:
-            <RecordingCount />
-          </div>
-        )}
-      </div>
+      {isRecordingX && <RecordingCount />}
     </div>
   );
 }
