@@ -11,4 +11,4 @@ Copy an YouTube url to the search input and start practising ;)
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)
