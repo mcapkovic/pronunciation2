@@ -31,11 +31,13 @@
     transition: $backgroundTransition;
   }
   &__button {
+    margin: 0;
+    padding: 0;
     position: absolute;
-    right: 0;
+    right: 4px;
     background-color: transparent;
     border: none;
-    top: 55%;
+    top: 50%;
     transform: translateY(-50%);
     svg {
       color: var(--main-icon);

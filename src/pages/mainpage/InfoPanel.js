@@ -36,8 +36,13 @@ function VideoSource(props) {
     },
     [setValue]
   );
+
+  const onSubmit = e => {
+    if (e.keyCode === 13) addUrl();
+  };
+
   return (
-    <div className="video-source">
+    <div className="video-source" onKeyUp={onSubmit}>
       <input
         onKeyDown={(e) => e.stopPropagation()}
         ref={inputRef}
