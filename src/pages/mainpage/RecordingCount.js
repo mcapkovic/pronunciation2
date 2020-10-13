@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useInterval from "../../hooks/useInterval";
+import {toMinutes} from '../../utils/convertTime';
 import './RecordingCount.scss';
 
 export default function RecordingCount() {
@@ -11,5 +12,5 @@ export default function RecordingCount() {
     setCount(count + 1);
   }, delay);
 
-  return <div className="recording-count"> <div className='recording-count__dot'/> {count}</div>;
+  return <div className="recording-count"> <div className='recording-count__dot'/> {toMinutes(count)}</div>;
 }
