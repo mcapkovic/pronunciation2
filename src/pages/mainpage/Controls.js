@@ -15,10 +15,12 @@ import {
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useGetKey } from "../../hooks/useGetKey";
 import { BookmarksContext } from "../../context/bookmarksContext";
-import Record from "./Recorder";
+// import Record from "./Recorder";
+import Recorder from "./Recorder2";
 import useKeyDown from "../../hooks/useKeyDown";
 import TooltipDescription from "../../components/TooltipDescription";
 import { getTooltipText } from "../../utils/generalUtils";
+import { getBrowserName } from "../../utils/generalUtils";
 
 function Button(props) {
   const { icon, tooltip, ...buttonProps } = props;
@@ -99,14 +101,20 @@ function Controls(props) {
   } = props;
 
   const { activeBookmark } = React.useContext(BookmarksContext);
-
+  const browser = React.useRef(getBrowserName());
   const [isRecording, setIsRecording] = React.useState(false);
   const [isRecordPlaying, setIsRecordPlaying] = React.useState(false);
 
+  const recCount = React.useRef(0);
   const toggleRecording = () => {
     if (isSourcePlaying) toggleSource();
-    if (isRecording) setIsRecordPlaying(true);
-    if (!isRecording) setIsRecordPlaying(false);
+    const skip = recCount.current <= 1 && browser.current === "Safari";
+    if (isRecording && !skip) {
+      setIsRecordPlaying(true);
+    } else {
+      recCount.current = recCount.current + 1;
+      setIsRecordPlaying(false);
+    }
     setIsRecording(!isRecording);
   };
   const toggleRecordPlay = () => {
@@ -166,7 +174,12 @@ function Controls(props) {
 
         <div className="controls2__record controls2__box">
           <div className="controls2__record__sound">
-            <Record
+            {/* <Record
+              isRecording={isRecording}
+              setIsRecordPlaying={setIsRecordPlaying}
+              isRecordPlaying={isRecordPlaying}
+            /> */}
+            <Recorder
               isRecording={isRecording}
               setIsRecordPlaying={setIsRecordPlaying}
               isRecordPlaying={isRecordPlaying}
