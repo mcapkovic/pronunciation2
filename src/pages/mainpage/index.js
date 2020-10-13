@@ -53,9 +53,6 @@ function MainPage() {
 
   return (
     <BookmarksContext.Provider value={provider}>
-      <div className="browser-warning">
-        WARNING. Voice recording not supported in Safari.
-      </div>
       <div className={`page page--${layout}`}>
         <div className={`page__video-row`}>
           <ControlledPlayer
