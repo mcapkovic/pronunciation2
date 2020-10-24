@@ -1,0 +1,16 @@
+.modal{
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+    &__content{
+        pointer-events: auto;
+        background-color: red;
+    }
+}

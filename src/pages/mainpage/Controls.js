@@ -21,6 +21,7 @@ import useKeyDown from "../../hooks/useKeyDown";
 import TooltipDescription from "../../components/TooltipDescription";
 import { getTooltipText } from "../../utils/generalUtils";
 import { getBrowserName } from "../../utils/generalUtils";
+// import Modal from '../../components/Modal';
 
 function Button(props) {
   const { icon, tooltip, ...buttonProps } = props;
