@@ -10,6 +10,8 @@ import {
   faForward,
   faExpandAlt,
   faCompressAlt,
+  faVideo,
+  faVideoSlash,
   faBookmark as faBookmarkSolid,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
@@ -88,7 +90,7 @@ function Controls(props) {
   const {
     layout,
     setLayout,
-    state: { isSourcePlaying, rewindValue, bookmarkOffset },
+    state: { isSourcePlaying, rewindValue, bookmarkOffset, isCameraActive },
     customDispatch: {
       toggleSource,
       setRewindValue,
@@ -97,6 +99,7 @@ function Controls(props) {
       addBookmark,
       setBookmarkOffset,
       playBookmark,
+      setIsCameraActive,
     },
   } = props;
 
@@ -267,6 +270,12 @@ function Controls(props) {
             <Button
               icon={layout === "row" ? faExpandAlt : faCompressAlt}
               onClick={() => setLayout(layout === "row" ? "column" : "row")}
+            />
+          </div>
+          <div className="controls2__utils__camera">
+            <Button
+              icon={isCameraActive ? faVideoSlash : faVideo}
+              onClick={() => setIsCameraActive(!isCameraActive)}
             />
           </div>
           <div className="controls2__utils__key">

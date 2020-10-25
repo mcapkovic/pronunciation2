@@ -26,8 +26,10 @@ $border: 1px solid var(--main-gray);
   }
   .controlled-player__source {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     // background-color: var(--main-gray);
     // background-color: red;
     height: 5em;
@@ -40,6 +42,15 @@ $border: 1px solid var(--main-gray);
     border-top: $border;
     border-left: $border;
 
+    &__camera {
+      height: 99%;
+      width: 99%;
+      video {
+        height: 100%;
+        position: absolute;
+        top: 0;
+      }
+    }
   }
   &--column {
     .controlled-player__source {
@@ -50,7 +61,7 @@ $border: 1px solid var(--main-gray);
 
   @media only screen and (min-width: 450px) {
     &__video-row {
-        width: 90%;
+      width: 90%;
     }
   }
 
@@ -81,6 +92,29 @@ $border: 1px solid var(--main-gray);
       // max-height: 15rem;
       &__info {
         margin: 0 0 0 1rem;
+      }
+    }
+  }
+
+  &__footer {
+    border-top: $border;
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+      text-align: center;
+      opacity: 0.5;
+    }
+    &__ko-fi {
+      opacity: 0.4;
+      margin-top: 10px;
+      &:hover {
+        opacity: 1;
       }
     }
   }

@@ -120,15 +120,22 @@ $box-size-small: 4.5rem;
 
   &__utils {
     display: none;
+    flex-wrap: wrap;
     &__resize {
       display: none;
-      width: 100%;
+      width: 50%;
       height: 0%;
+      border-bottom: $border;
+      border-right: $border;
+    }
+    &__camera {
+      width: 100%;
+      height: 50%;
       border-bottom: $border;
     }
     &__key {
       width: 100%;
-      height: 100%;
+      height: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -147,7 +154,7 @@ $box-size-small: 4.5rem;
     }
 
     &__utils {
-      display: block;
+      display: flex;
     }
   }
 
@@ -156,6 +163,11 @@ $box-size-small: 4.5rem;
       &__resize {
         display: block;
         height: 50%;
+      }
+      &__camera {
+        width: 50%;
+        height: 50%;
+
       }
       &__key {
         height: 50%;

@@ -47,4 +47,10 @@ export const bookmarksActions = {
         isSourcePlaying: true,
       };
     },
+    setIsCameraActive: (state, action) => {
+      return {
+        ...state,
+        isCameraActive: action.payload,
+      };
+    },
   };
