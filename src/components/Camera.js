@@ -4,7 +4,7 @@ import { useUserMedia } from "../hooks/useUserMedia";
 
 const CAPTURE_OPTIONS = {
   audio: false,
-  video: { facingMode: "environment" },
+  video: { facingMode: "user" },
 };
 
 function Camera(props) {
