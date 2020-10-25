@@ -10,6 +10,7 @@
     z-index: 1;
     pointer-events: none;
     &__content{
+        overflow: hidden;
         pointer-events: auto;
         background-color: red;
     }

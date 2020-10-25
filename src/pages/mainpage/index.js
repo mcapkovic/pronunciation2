@@ -11,6 +11,7 @@ import {
   BookmarksContext,
   bookmarksActions,
 } from "../../context/bookmarksContext";
+import Camera from "../../components/Camera";
 
 function ControlledPlayer(props) {
   const { layout, setLayoutButton, className } = props;
@@ -22,12 +23,14 @@ function ControlledPlayer(props) {
     addBookmarkTrigger: 0,
     bookmarkOffset: -1,
     playBookmarkTrigger: 0,
+    isCameraActive: false,
   });
 
   return (
     <div className={`controlled-player ${className}`}>
       <div className={`controlled-player__source`}>
         <Player state={state} customDispatch={customDispatch} />
+        {state.isCameraActive && <Camera className="controlled-player__source__camera" />}
       </div>
       <Controls
         state={state}
