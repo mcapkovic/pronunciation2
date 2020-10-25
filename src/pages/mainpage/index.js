@@ -30,7 +30,9 @@ function ControlledPlayer(props) {
     <div className={`controlled-player ${className}`}>
       <div className={`controlled-player__source`}>
         <Player state={state} customDispatch={customDispatch} />
-        {state.isCameraActive && <Camera className="controlled-player__source__camera" />}
+        {state.isCameraActive && (
+          <Camera className="controlled-player__source__camera" />
+        )}
       </div>
       <Controls
         state={state}
@@ -75,6 +77,28 @@ function MainPage() {
           <InfoPanel className="page__details-row__info" />
         </div>
         <div className="page__bottom-spacer" />
+
+        <div className="page__footer">
+          <div className="page__footer__text">
+            Contact mcapkovic+pronunciation@gmail.com App development and
+            maintenance take a great amount of time. If you like the project, you can support it by clicking on the button below.
+          </div>
+          <div className="page__footer__ko-fi">
+            <a
+              href="https://ko-fi.com/T6T22IEIO"
+              target="_blank"
+              style={{ margin: "20px" }}
+            >
+              <img
+                height="36"
+                style={{ border: "0px", height: "36px" }}
+                src="https://cdn.ko-fi.com/cdn/kofi1.png?v=2"
+                border="0"
+                alt="Buy Me a Coffee at ko-fi.com"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </BookmarksContext.Provider>
   );

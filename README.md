@@ -2,6 +2,7 @@
 
 Pronunciation is a simple Web app for practicing language pronunciation with option of voice recording and time bookmarking.
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T22IEIO)
 
 ## Usage
 

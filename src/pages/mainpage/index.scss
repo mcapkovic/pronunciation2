@@ -95,4 +95,27 @@ $border: 1px solid var(--main-gray);
       }
     }
   }
+
+  &__footer {
+    border-top: $border;
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+      text-align: center;
+      opacity: 0.5;
+    }
+    &__ko-fi {
+      opacity: 0.4;
+      margin-top: 10px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
