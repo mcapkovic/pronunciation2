@@ -23,8 +23,6 @@ function App() {
   return (
     <div className={"page-wrapper " + browser}>
       {videoUrl ? <MainPage /> : <SearchPage />}
-      <button onClick={() => {throw new Error}}>Break the world</button>
-
     </div>
   );
 }
