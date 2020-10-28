@@ -4,7 +4,7 @@ import "./styles/all.scss";
 import SearchPage from "./pages/homepage";
 import MainPage from "./pages/mainpage";
 import { URL_VIDEO } from "./constants";
-import useTracking from "./hooks/useTracking";
+// import useTracking from "./hooks/useTracking";
 import { getBrowserName } from "./utils/generalUtils";
 
 function App() {
@@ -18,11 +18,13 @@ function App() {
 
   const browser = React.useMemo(getBrowserName, []);
 
-  useTracking();
+  // useTracking();
 
   return (
     <div className={"page-wrapper " + browser}>
       {videoUrl ? <MainPage /> : <SearchPage />}
+      <button onClick={() => {throw new Error}}>Break the world</button>
+
     </div>
   );
 }
